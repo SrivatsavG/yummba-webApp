@@ -1,0 +1,9 @@
+{
+    "env": {
+        "MONGO_USER": "srivatsav",
+        "MONGO_PASSWORD": "0904",
+        "MONGO_DB": "yummba_max",
+        "STRIPE_KEY": "sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0",
+        "ADMIN" : "5e15612cf126790d7c32128e"
+    }
+}
