@@ -28,10 +28,6 @@ router.get('/checkout', isAuth, shopController.getCheckout);
 
 // router.get('/checkout/cancel', isAuth, shopController.getCheckout);
 
-router.get('/payment', isAuth,  shopController.postPayment);
-
-router.post('/payment/sucess', shopController.postPaymentSuccess);
-
 router.get('/orders', isAuth,  shopController.getOrders);
 
 router.get('/orders/:orderId', isAuth, shopController.getInvoice);
