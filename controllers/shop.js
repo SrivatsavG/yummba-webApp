@@ -371,6 +371,7 @@ exports.getInvoice = (req, res, next) => {
 
 
 exports.postPayment = (req, res, next) => {
+  console.log("reached here");
   let params = {}
   params['MID'] = 'WopolV35383146897967',
     params['WEBSITE'] = 'WEBSTAGING',
