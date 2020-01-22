@@ -146,13 +146,14 @@ exports.getCheckout = (req, res, next) => {
     .populate('cart.items.productId')
     .execPopulate()
     .then(user => {
-      console.log("Reached 1")
-
+      console.log("Reached 1");
       products = user.cart.items;
       total = 0;
       products.forEach(p => {
         total += p.quantity * p.productId.price;
-      });     
+      });
+      console.log(products);
+      console.log(total);     
     })
     .then(result => {
       console.log("Reached 2")
@@ -167,10 +168,11 @@ exports.getCheckout = (req, res, next) => {
     })
     .catch(err => {
       console.log("REACHED 3!!");
-      console.log(err);
-      const error = new Error(err);
-      error.httpStatusCode = 500;
-      return next(error);
+      res.redirect('/products');
+      // console.log(err);
+      // const error = new Error(err);
+      // error.httpStatusCode = 500;
+      // return next(error);
     });
 
 
