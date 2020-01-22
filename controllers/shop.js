@@ -159,7 +159,9 @@ exports.getCheckout = (req, res, next) => {
       console.log("Reached 2")
       res.render('shop/checkout2', {
         path: '/checkout',
-        pageTitle: 'Checkout'
+        pageTitle: 'Checkout',
+        user: req.user || null,
+        admin: process.env.ADMIN
       })
 
       // res.render('shop/checkout', {
