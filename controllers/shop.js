@@ -157,7 +157,7 @@ exports.getCheckout = (req, res, next) => {
     })
     .then(result => {
       console.log("Reached 2")
-      res.render('/products');
+      res.redirect('/products');
       // res.render('shop/checkout', {
       //   path: '/checkout',
       //   pageTitle: 'Checkout',
