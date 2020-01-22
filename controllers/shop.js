@@ -150,6 +150,16 @@ exports.getCheckout = (req, res, next) => {
         total += p.quantity * p.productId.price;
       });
       
+      res.render('shop/checkout', {
+        path: '/checkout',
+        pageTitle: 'Checkout',
+        products: products,
+        totalSum: total,
+        sessionId: session.id,
+        user: req.user || null,
+        admin: process.env.ADMIN
+      });
+
       // return stripe.checkout.sessions.create({
       //   payment_method_types: ['card'],
       //   line_items: products.map(p => {
@@ -165,19 +175,19 @@ exports.getCheckout = (req, res, next) => {
       //   success_url: req.protocol + '://' + req.get('host') + '/checkout/success', // => http://localhost:3000
       //   cancel_url: req.protocol + '://' + req.get('host') + '/checkout/cancel'
       // });
-    })
-    .then(session => {
+    // })
+    // .then(session => {
 
-      console.log(session);
-      res.render('shop/checkout', {
-        path: '/checkout',
-        pageTitle: 'Checkout',
-        products: products,
-        totalSum: total,
-        sessionId: session.id,
-        user: req.user || null,
-        admin: process.env.ADMIN
-      });
+    //   console.log(session);
+    //   res.render('shop/checkout', {
+    //     path: '/checkout',
+    //     pageTitle: 'Checkout',
+    //     products: products,
+    //     totalSum: total,
+    //     sessionId: session.id,
+    //     user: req.user || null,
+    //     admin: process.env.ADMIN
+    //   });
     })
     .catch(err => {
       console.log(err);
