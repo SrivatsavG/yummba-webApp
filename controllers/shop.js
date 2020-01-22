@@ -371,33 +371,38 @@ exports.getInvoice = (req, res, next) => {
 
 
 exports.postPayment = (req, res, next) => {
-  console.log("reached here");
-  let params = {}
-  params['MID'] = 'WopolV35383146897967',
-    params['WEBSITE'] = 'WEBSTAGING',
-    params['CHANNEL_ID'] = 'WEB',
-    params['INDUSTRY_TYPE_ID'] = 'Retail',
-    params['ORDER_ID'] = 'ORD0001',
-    params['CUST_ID'] = 'CUST0001',
-    params['TXN_AMOUNT'] = '100',
-    params['CALLBACK_URL'] = 'https://merchant.com/callback/',
-    params['EMAIL'] = 'xyz@gmail.com',
-    params['MOBILE_NO'] = '9999999000',
+  try {
+    let params = {}
+    params['MID'] = 'WopolV35383146897967',
+      params['WEBSITE'] = 'WEBSTAGING',
+      params['CHANNEL_ID'] = 'WEB',
+      params['INDUSTRY_TYPE_ID'] = 'Retail',
+      params['ORDER_ID'] = 'ORD0001',
+      params['CUST_ID'] = 'CUST0001',
+      params['TXN_AMOUNT'] = '100',
+      params['CALLBACK_URL'] = 'https://merchant.com/callback/',
+      params['EMAIL'] = 'xyz@gmail.com',
+      params['MOBILE_NO'] = '9999999000',
 
-    checksum_lib.genchecksum(params, 'LKVKUJIKc&Zg#ZAc', function (err, checksum) {
-      let txn_url = "https://securegw-stage.paytm.in/order/process"
+      checksum_lib.genchecksum(params, 'LKVKUJIKc&Zg#ZAc', function (err, checksum) {
+        let txn_url = "https://securegw-stage.paytm.in/order/process"
 
-      let form_fields = ""
-      for (x in params) {
-        form_fields += "<input type='hidden' name='" + x + "' value='" + params[x] + "'/>"
+        let form_fields = ""
+        for (x in params) {
+          form_fields += "<input type='hidden' name='" + x + "' value='" + params[x] + "'/>"
 
-      }
+        }
 
-      form_fields += "<input type='hidden' name='CHECKSUMHASH' value='" + checksum + "' />"
+        form_fields += "<input type='hidden' name='CHECKSUMHASH' value='" + checksum + "' />"
 
-      var html = '<html><body><center><h1>Please wait! Do not refresh the page</h1></center><form method="post" action="' + txn_url + '" name="f1">' + form_fields + '</form><script type="text/javascript">document.f1.submit()</script></body></html>'
-      res.writeHead(200, { 'Content-Type': 'text/html' })
-      res.write(html)
-      res.end()
-    })
+        var html = '<html><body><center><h1>Please wait! Do not refresh the page</h1></center><form method="post" action="' + txn_url + '" name="f1">' + form_fields + '</form><script type="text/javascript">document.f1.submit()</script></body></html>'
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.write(html)
+        res.end()
+      })
+  }
+  catch{
+    console.log("ERROR IN POSTPAYMENT");
+    res.redirect("/products");
+  }
 }
