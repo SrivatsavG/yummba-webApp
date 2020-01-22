@@ -140,13 +140,12 @@ exports.getCheckout = (req, res, next) => {
 
   let products;
   let total = 0;
-  console.log("Reached 0")
-
+  
   req.user
     .populate('cart.items.productId')
     .execPopulate()
     .then(user => {
-      console.log("Reached 1");
+      
       products = user.cart.items;
       total = 0;
       products.forEach(p => {
@@ -156,7 +155,7 @@ exports.getCheckout = (req, res, next) => {
       console.log(total);
     })
     .then(result => {
-      console.log("Reached 2")
+      
       res.render('shop/checkout2', {
         path: '/checkout',
         pageTitle: 'Checkout',
@@ -166,15 +165,6 @@ exports.getCheckout = (req, res, next) => {
         totalSum: total
         
       })
-
-      // res.render('shop/checkout', {
-      //   path: '/checkout',
-      //   pageTitle: 'Checkout',
-      //   products: products,
-      //   totalSum: total,
-      //   user: req.user || null,
-      //   admin: process.env.ADMIN
-      // });
     })
     .catch(err => {
       console.log("REACHED 3!!");
@@ -443,7 +433,7 @@ exports.postPayment = (req, res, next) => {
       params['ORDER_ID'] = 'ORD0001',
       params['CUST_ID'] = 'CUST0001',
       params['TXN_AMOUNT'] = '100',
-      params['CALLBACK_URL'] = 'https://yummba.herokuapp.com/products',
+      params['CALLBACK_URL'] = 'https://yummba.herokuapp.com/',
       params['EMAIL'] = 'xyz@gmail.com',
 
       checksum_lib.genchecksum(params, 'LKVKUJIKc&Zg#ZAc', function (err, checksum) {
