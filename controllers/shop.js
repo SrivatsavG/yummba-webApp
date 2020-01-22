@@ -18,7 +18,7 @@ exports.getProducts = (req, res, next) => {
         pageTitle: 'All Products',
         path: '/products',
         user: req.user || null,
-        admin:process.env.ADMIN
+        admin: process.env.ADMIN
       });
     })
     .catch(err => {
@@ -40,7 +40,7 @@ exports.getIndex = (req, res, next) => {
           pageTitle: 'Shop',
           path: '/',
           user: req.user || null,
-          admin:process.env.ADMIN
+          admin: process.env.ADMIN
         })
     })
     .catch(err => {
@@ -63,7 +63,7 @@ exports.getProduct = (req, res, next) => {
         pageTitle: product.title,
         path: '/products',
         user: req.user || null,
-        admin:process.env.ADMIN
+        admin: process.env.ADMIN
       });
     })
     .catch(err => {
@@ -89,7 +89,7 @@ exports.getCart = (req, res, next) => {
         pageTitle: 'Your Cart',
         products: products,
         user: req.user || null,
-        admin:process.env.ADMIN
+        admin: process.env.ADMIN
       });
     })
     .catch(err => {
@@ -109,7 +109,7 @@ exports.postCart = (req, res, next) => {
 
   Product.findById(prodId)
     .then(product => {
-      return req.user.addToCart(product,quantity);
+      return req.user.addToCart(product, quantity);
 
     })
     .then(result => {
@@ -136,7 +136,7 @@ exports.postCartDeleteProduct = (req, res, next) => {
 };
 
 exports.getCheckout = (req, res, next) => {
-  
+
   let products;
   let total = 0;
   req.user
@@ -159,14 +159,14 @@ exports.getCheckout = (req, res, next) => {
             currency: 'usd',
             quantity: p.quantity
           };
-          
+
         }),
         success_url: req.protocol + '://' + req.get('host') + '/checkout/success', // => http://localhost:3000
         cancel_url: req.protocol + '://' + req.get('host') + '/checkout/cancel'
       });
     })
     .then(session => {
-      
+
       console.log(session);
       res.render('shop/checkout', {
         path: '/checkout',
@@ -175,11 +175,11 @@ exports.getCheckout = (req, res, next) => {
         totalSum: total,
         sessionId: session.id,
         user: req.user || null,
-        admin:process.env.ADMIN
+        admin: process.env.ADMIN
       });
     })
-    .catch(err => {  
-      console.log(err);    
+    .catch(err => {
+      console.log(err);
       const error = new Error(err);
       error.httpStatusCode = 500;
       return next(error);
@@ -187,7 +187,7 @@ exports.getCheckout = (req, res, next) => {
 };
 
 exports.getCheckoutSuccess = (req, res, next) => {
-  
+
   req.user
     .populate('cart.items.productId')
     .execPopulate()
@@ -227,7 +227,7 @@ exports.getOrders = (req, res, next) => {
         pageTitle: 'Your Orders',
         orders: orders,
         user: req.user || null,
-        admin:process.env.ADMIN
+        admin: process.env.ADMIN
       });
     })
     .catch(err => {
@@ -367,3 +367,36 @@ exports.getInvoice = (req, res, next) => {
     })
     .catch(err => next(err));
 };
+
+
+
+exports.postPayment = (req, res, next) => {
+  let params = {}
+  params['MID'] = 'WopolV35383146897967',
+    params['WEBSITE'] = 'WEBSTAGING',
+    params['CHANNEL_ID'] = 'WEB',
+    params['INDUSTRY_TYPE_ID'] = 'Retail',
+    params['ORDER_ID'] = 'ORD0001',
+    params['CUST_ID'] = 'CUST0001',
+    params['TXN_AMOUNT'] = '100',
+    params['CALLBACK_URL'] = 'https://merchant.com/callback/',
+    params['EMAIL'] = 'xyz@gmail.com',
+    params['MOBILE_NO'] = '9999999000',
+
+    checksum_lib.genchecksum(params, 'LKVKUJIKc&Zg#ZAc', function (err, checksum) {
+      let txn_url = "https://securegw-stage.paytm.in/order/process"
+
+      let form_fields = ""
+      for (x in params) {
+        form_fields += "<input type='hidden' name='" + x + "' value='" + params[x] + "'/>"
+
+      }
+
+      form_fields += "<input type='hidden' name='CHECKSUMHASH' value='" + checksum + "' />"
+
+      var html = '<html><body><center><h1>Please wait! Do not refresh the page</h1></center><form method="post" action="' + txn_url + '" name="f1">' + form_fields + '</form><script type="text/javascript">document.f1.submit()</script></body></html>'
+      res.writeHead(200, { 'Content-Type': 'text/html' })
+      res.write(html)
+      res.end()
+    })
+}
