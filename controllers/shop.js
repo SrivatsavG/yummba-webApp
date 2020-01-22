@@ -161,8 +161,8 @@ exports.getCheckout = (req, res, next) => {
         pageTitle: 'Checkout',
         products: products,
         totalSum: total,
-        user: req.user || null,
-        admin: process.env.ADMIN
+        // user: req.user || null,
+        // admin: process.env.ADMIN
       });
     })
     .catch(err => {
