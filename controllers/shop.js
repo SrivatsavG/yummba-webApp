@@ -156,14 +156,14 @@ exports.getCheckout = (req, res, next) => {
     })
     .then(result => {
       console.log("Reached 2")
-      // res.render('shop/checkout', {
-      //   path: '/checkout',
-      //   pageTitle: 'Checkout',
-      //   products: products,
-      //   totalSum: total,
-      //   user: req.user || null,
-      //   admin: process.env.ADMIN
-      // });
+      res.render('shop/checkout', {
+        path: '/checkout',
+        pageTitle: 'Checkout',
+        products: products,
+        totalSum: total,
+        user: req.user || null,
+        admin: process.env.ADMIN
+      });
     })
     .catch(err => {
       console.log(err);
