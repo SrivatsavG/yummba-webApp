@@ -149,8 +149,9 @@ exports.getCheckout = (req, res, next) => {
       total = 0;
       products.forEach(p => {
         total += p.quantity * p.productId.price;
-      });
-
+      });     
+    })
+    .then(result => {
       res.render('shop/checkout', {
         path: '/checkout',
         pageTitle: 'Checkout',
