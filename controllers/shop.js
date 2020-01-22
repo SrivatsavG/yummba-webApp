@@ -140,11 +140,14 @@ exports.getCheckout = (req, res, next) => {
 
   let products;
   let total = 0;
+  console.log("Reached 0")
 
   req.user
     .populate('cart.items.productId')
     .execPopulate()
     .then(user => {
+      console.log("Reached 1")
+
       products = user.cart.items;
       total = 0;
       products.forEach(p => {
@@ -152,14 +155,15 @@ exports.getCheckout = (req, res, next) => {
       });     
     })
     .then(result => {
-      res.render('shop/checkout', {
-        path: '/checkout',
-        pageTitle: 'Checkout',
-        products: products,
-        totalSum: total,
-        user: req.user || null,
-        admin: process.env.ADMIN
-      });
+      console.log("Reached 2")
+      // res.render('shop/checkout', {
+      //   path: '/checkout',
+      //   pageTitle: 'Checkout',
+      //   products: products,
+      //   totalSum: total,
+      //   user: req.user || null,
+      //   admin: process.env.ADMIN
+      // });
     })
     .catch(err => {
       console.log(err);
