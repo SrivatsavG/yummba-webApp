@@ -140,12 +140,12 @@ exports.getCheckout = (req, res, next) => {
 
   let products;
   let total = 0;
-  
+
   req.user
     .populate('cart.items.productId')
     .execPopulate()
     .then(user => {
-      
+
       products = user.cart.items;
       total = 0;
       products.forEach(p => {
@@ -155,7 +155,7 @@ exports.getCheckout = (req, res, next) => {
       console.log(total);
     })
     .then(result => {
-      
+
       res.render('shop/checkout2', {
         path: '/checkout',
         pageTitle: 'Checkout',
@@ -163,7 +163,7 @@ exports.getCheckout = (req, res, next) => {
         admin: process.env.ADMIN,
         products: products,
         totalSum: total
-        
+
       })
     })
     .catch(err => {
@@ -433,7 +433,7 @@ exports.postPayment = (req, res, next) => {
       params['ORDER_ID'] = 'ORD0001',
       params['CUST_ID'] = 'CUST0001',
       params['TXN_AMOUNT'] = '100',
-      params['CALLBACK_URL'] = '',
+      params['CALLBACK_URL'] = 'https://yummba.herokuapp.com/payment/sucess',
       params['EMAIL'] = 'xyz@gmail.com',
 
       checksum_lib.genchecksum(params, 'LKVKUJIKc&Zg#ZAc', function (err, checksum) {
@@ -457,3 +457,15 @@ exports.postPayment = (req, res, next) => {
     res.redirect("/products");
   }
 }
+
+exports.postPaymentSuccess = (req, res, next) => {
+  res.render('shop/index',
+    {
+      prods: products,
+      pageTitle: 'Shop',
+      path: '/',
+      user: req.user || null,
+      admin: process.env.ADMIN
+    })
+}
+
