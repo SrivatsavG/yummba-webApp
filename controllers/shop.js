@@ -156,17 +156,16 @@ exports.getCheckout = (req, res, next) => {
         pageTitle: 'Checkout',
         products: products,
         totalSum: total,
-        sessionId: session.id,
         user: req.user || null,
         admin: process.env.ADMIN
       });
     })
-    .catch (err => {
-    console.log(err);
-    const error = new Error(err);
-    error.httpStatusCode = 500;
-    return next(error);
-  });
+    .catch(err => {
+      console.log(err);
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+    });
 
 
   //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
