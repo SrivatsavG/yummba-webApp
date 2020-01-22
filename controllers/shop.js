@@ -454,7 +454,14 @@ exports.postPayment = (req, res, next) => {
   }
   catch{
     console.log("ERROR IN POSTPAYMENT");
-    res.redirect("/products");
+    res.render('shop/index',
+    {
+      prods: products,
+      pageTitle: 'Shop',
+      path: '/',
+      user: req.user || null,
+      admin: process.env.ADMIN
+    })
   }
 }
 
