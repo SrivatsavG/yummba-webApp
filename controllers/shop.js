@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const stripe = require('stripe')('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
+// const stripe = require('stripe')('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
+const checksum_lib = require('../public/paytm/checksum/checksum');
 
 //('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
 
@@ -380,9 +381,8 @@ exports.postPayment = (req, res, next) => {
       params['ORDER_ID'] = 'ORD0001',
       params['CUST_ID'] = 'CUST0001',
       params['TXN_AMOUNT'] = '100',
-      params['CALLBACK_URL'] = 'https://merchant.com/callback/',
+      params['CALLBACK_URL'] = 'https://yummba.herokuapp.com/products',
       params['EMAIL'] = 'xyz@gmail.com',
-      params['MOBILE_NO'] = '9999999000',
 
       checksum_lib.genchecksum(params, 'LKVKUJIKc&Zg#ZAc', function (err, checksum) {
         let txn_url = "https://securegw-stage.paytm.in/order/process"
@@ -390,7 +390,6 @@ exports.postPayment = (req, res, next) => {
         let form_fields = ""
         for (x in params) {
           form_fields += "<input type='hidden' name='" + x + "' value='" + params[x] + "'/>"
-
         }
 
         form_fields += "<input type='hidden' name='CHECKSUMHASH' value='" + checksum + "' />"
