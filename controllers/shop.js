@@ -161,7 +161,10 @@ exports.getCheckout = (req, res, next) => {
         path: '/checkout',
         pageTitle: 'Checkout',
         user: req.user || null,
-        admin: process.env.ADMIN
+        admin: process.env.ADMIN,
+        products: products,
+        totalSum: total
+        
       })
 
       // res.render('shop/checkout', {
