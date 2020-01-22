@@ -433,7 +433,7 @@ exports.postPayment = (req, res, next) => {
       params['ORDER_ID'] = 'ORD0001',
       params['CUST_ID'] = 'CUST0001',
       params['TXN_AMOUNT'] = '100',
-      params['CALLBACK_URL'] = 'https://yummba.herokuapp.com/',
+      params['CALLBACK_URL'] = '',
       params['EMAIL'] = 'xyz@gmail.com',
 
       checksum_lib.genchecksum(params, 'LKVKUJIKc&Zg#ZAc', function (err, checksum) {
