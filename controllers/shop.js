@@ -153,11 +153,15 @@ exports.getCheckout = (req, res, next) => {
         total += p.quantity * p.productId.price;
       });
       console.log(products);
-      console.log(total);     
+      console.log(total);
     })
     .then(result => {
       console.log("Reached 2")
-      res.redirect('/products');
+      res.render('shop/checkout2', {
+        path: '/checkout',
+        pageTitle: 'Checkout'
+      })
+
       // res.render('shop/checkout', {
       //   path: '/checkout',
       //   pageTitle: 'Checkout',
