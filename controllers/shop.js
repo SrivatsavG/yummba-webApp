@@ -466,7 +466,7 @@ exports.postPayment = (req, res, next) => {
 }
 
 exports.postPaymentSuccess = (req, res, next) => {
-  res.render('shop/index',
+  res.redirect('index',
     {
       prods: products,
       pageTitle: 'Shop',
