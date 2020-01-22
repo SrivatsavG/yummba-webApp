@@ -140,25 +140,30 @@ exports.getCheckout = (req, res, next) => {
 
   let products;
   let total = 0;
-  req.user
-    .populate('cart.items.productId')
-    .execPopulate()
-    .then(user => {
-      products = user.cart.items;
-      total = 0;
-      products.forEach(p => {
-        total += p.quantity * p.productId.price;
-      });
+  res.redirect("/products");
+
+  //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+  // req.user
+  //   .populate('cart.items.productId')
+  //   .execPopulate()
+  //   .then(user => {
+  //     products = user.cart.items;
+  //     total = 0;
+  //     products.forEach(p => {
+  //       total += p.quantity * p.productId.price;
+  //     });
       
-      res.render('shop/checkout', {
-        path: '/checkout',
-        pageTitle: 'Checkout',
-        products: products,
-        totalSum: total,
-        sessionId: session.id,
-        user: req.user || null,
-        admin: process.env.ADMIN
-      });
+  //     res.render('shop/checkout', {
+  //       path: '/checkout',
+  //       pageTitle: 'Checkout',
+  //       products: products,
+  //       totalSum: total,
+  //       sessionId: session.id,
+  //       user: req.user || null,
+  //       admin: process.env.ADMIN
+  //     });
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
 
       // return stripe.checkout.sessions.create({
       //   payment_method_types: ['card'],
