@@ -1,10 +1,9 @@
 <%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/cart.css">
-    
+    <link rel="stylesheet" href="/css/cart.css">    
     </head>
 
     <body>
-        <%- include('../includes/navigation.ejs') %>
+        <!-- <%- include('../includes/navigation.ejs') %> -->
         <main>
             <ul class="cart__item-list">
                 <% products.forEach(p => { %>
@@ -18,10 +17,10 @@
                 <h2>Total: <%= totalSum %></h2>
             </div>
             <div class="centered">
-                <form action="/payment" method="post">
-                    <!-- <input type="hidden" name='_csrf' value="<%= csrfToken %>"> -->
+                <!-- <form action="/payment" method="post">
+                    <input type="hidden" name='_csrf' value="<%= csrfToken %>">
                     <button id="order-btn" class="btn">Order</button>
-                </form>
+                </form> -->
 
                 <!-- <script src="https://js.stripe.com/v3/"></script>
                 <script>

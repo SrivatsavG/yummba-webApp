@@ -161,18 +161,17 @@ exports.getCheckout = (req, res, next) => {
         path: '/checkout',
         pageTitle: 'Checkout',
         products: products,
-        totalSum: total
+        totalSum: total,
         // user: req.user || null,
         // admin: process.env.ADMIN
       });
     })
     .catch(err => {
       console.log("REACHED 3!!");
-      res.redirect('/products');
-      // console.log(err);
-      // const error = new Error(err);
-      // error.httpStatusCode = 500;
-      // return next(error);
+      console.log(err);
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
     });
 
 
