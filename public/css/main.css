@@ -33,7 +33,8 @@ form {
 .main-header {
   width: 100%;
   height: 5rem;
-  background-color: #faff70;
+  background-color: #ffab8c
+;
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
@@ -131,7 +132,8 @@ form {
   position: fixed;
   left: 0;
   top: 0;
-  background: #faff70;
+  background: #ffab8c
+;
   z-index: 10;
   padding: 2rem 1rem 1rem 2rem;
   transform: translateX(-100%);
@@ -293,7 +295,8 @@ form {
 }
 
 .dropbtn {
-  background-color: #faff70;
+  background-color: #ffab8c
+;
   width: 10rem;
   color: white;
   padding: 16px;
@@ -324,7 +327,8 @@ form {
   display: none;
   position: absolute;
   right: 0;
-  background-color: #faff70;
+  background-color: #ffab8c
+;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -352,7 +356,8 @@ form {
   text-decoration: none;
   display: block;
   color: white;
-  background-color: #faff70;
+  background-color: #ffab8c
+;
   border: none;
   min-width: 160px;
   font-weight: bolder;
