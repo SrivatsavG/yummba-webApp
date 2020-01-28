@@ -1,0 +1,16 @@
+body {
+    font-family: 'Roboto Slab', serif;
+}
+
+#productTitle {
+    font-weight: bolder;
+}
+
+#description {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+#price {
+    text-align: left;
+}

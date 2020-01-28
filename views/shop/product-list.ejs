@@ -1,5 +1,7 @@
 <%- include('../includes/head.ejs') %>
 <link rel="stylesheet" href="/css/product.css">
+<link rel="stylesheet" href="/css/addToCart.css">
+
 </head>
 
 <body>
@@ -19,26 +21,27 @@
                     <img src="/<%= product.imageUrl %>" alt="<%= product.title %>">
                 </div>
                 <div class="card__content">
-                    <h2 class="product__price">$
+                    <p class="product__price">Rs
                         <%= product.price %>
-                    </h2>
+                    </p>
                     <p class="product__description">
                         <%= product.description %>
                     </p>
                 </div>
-                <div class="row">
+                <div class="row card__actions d-flex justify-content-between">
                     <div class="col">
-                        <div class="card__actions">
-                            <a href="/products/<%= product._id %>" class="btn">Details</a>
-                            <% if (isAuthenticated) { %>
-                                <%- include('../includes/add-to-cart.ejs', {product: product}) %>
-                            <% } %>
-                        </div>
+                        <a href="/products/<%= product._id %>" class="btn"><i class="fas fa-info-circle"></i></a>
+                    </div>
+                    <div class="col">                        
+                        <% if (isAuthenticated) { %>
+                        <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                        <% } %>
                     </div>
                 </div>
-                
-            </article>
-            <% } %>
+        </div>
+
+        </article>
+        <% } %>
         </div>
         <% } else { %>
         <h1>No Products Found!</h1>

@@ -1,18 +1,16 @@
-<form action="/cart" method="post">
-    <input style="width:3rem; 
-    display: inline-block;
-    /* padding: 0.25rem 1rem; */
-    text-decoration: none;
-    font: inherit;
-    border: 1px solid #00695c;
-    color: #00695c;
-    background: white;
-    border-radius: 3px;
-    cursor: pointer;
-    text-align:right;
-    height:32;" 
-    class="quantity" id="quantity" type="number" name='quantity' min="1" step='1' value='1'>
-    <button class="btn" type="submit">Add to Cart</button>
-    <input type ="hidden" name= '_csrf' value="<%= csrfToken %>">
+<form class="addToCart-form" action="/cart" method="post">
+    <!-- <div class="row d-flex justify-content-end">
+        <div class="col">
+            <input class="quantity" id="quantity" type="number" name='quantity' min="1" step='1' value='1'>
+        </div>
+        <div class="col">
+            <button class="btn" type="submit"><i class="fas fa-cart-plus"></i></button>
+        </div>
+    </div> -->
+    <input class="quantity" id="quantity" type="number" name='quantity' min="1" step='1' value='1'>
+
+    <button class="btn" type="submit"><i class="fas fa-cart-plus"></i></button>
+
+    <input type="hidden" name='_csrf' value="<%= csrfToken %>">
     <input type="hidden" name="productId" value="<%= product._id %>">
 </form>

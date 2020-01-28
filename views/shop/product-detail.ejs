@@ -1,18 +1,30 @@
 <%- include('../includes/head.ejs') %>
-    </head>
+<link rel="stylesheet" href="/css/product-detail.css">
+<link rel="stylesheet" href="/css/addToCart.css">
 
-    <body>
-        <%- include('../includes/navigation.ejs') %>
-        <main class="centered">
-            <h1><%= product.title %></h1>
-            <hr>
-            <div class="image">
-                <img src="/<%= product.imageUrl %>" alt="<%= product.title %>">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main class="centered">
+        <h1 id="productTitle"><%= product.title %></h1>
+        <hr>
+        <div class="container">
+            <div class="row d-flex justify-content-around">
+                <div class="col">
+                    <div class="image">
+                        <img src="/<%= product.imageUrl %>" alt="<%= product.title %>">
+                    </div>
+                </div>
+                <div class="col">
+                    <p id="description"><%= product.description %></p>
+                    <p id="price">Price: Rs <%= product.price %></p>
+
+                    <% if (isAuthenticated) { %>
+                    <%- include('../includes/add-to-cart.ejs') %>
+                    <% } %>
+                </div>
             </div>
-            <h2><%= product.price %></h2>
-            <p><%= product.description %></p>
-            <% if (isAuthenticated) { %>
-                <%- include('../includes/add-to-cart.ejs') %>
-            <% } %>
-        </main>
-        <%- include('../includes/end.ejs') %>
+        </div>
+    </main>
+    <%- include('../includes/end.ejs') %>

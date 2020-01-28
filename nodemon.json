@@ -4,6 +4,15 @@
         "MONGO_PASSWORD": "0904",
         "MONGO_DB": "yummba_max",
         "STRIPE_KEY": "sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0",
-        "ADMIN" : "5e15612cf126790d7c32128e"
+        "ADMIN" : "5e15612cf126790d7c32128e",
+        "MID":"WopolV35383146897967",
+        "PAYTM_MERCHANT_KEY":"LKVKUJIKc&Zg#ZAc",
+        "WEBSITE":"WEBSTAGING",
+        "CHANNEL_ID":"WEB",
+        "INDUSTRY_TYPE_ID":"Retail",
+        "PAYTM_FINAL_URL":"https://securegw-stage.paytm.in/theia/processTransaction",
+        "CALLBACK_URL":"http://localhost:4000/paywithpaytmresponse",
+        "PORT":"4000"
+
     }
 }

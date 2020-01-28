@@ -1,0 +1,36 @@
+
+.addToCart-form {
+    height: 2rem;
+    line-height: 1.4
+}
+
+.card__actions {
+    vertical-align: top;
+    line-height: 1.4
+}
+.card__actions .btn {
+    border-radius: 50px;
+    margin-bottom: 4px;
+}
+
+.card__actions #quantity{
+    margin-bottom: 5px;
+}
+
+#quantity{
+    display: inline-block;
+    /* padding: 0.25rem 1rem; */
+    padding:0.2rem;
+    width:3.5rem;
+    text-decoration: none;
+    font-family: 'Roboto Slab', serif;
+    border: 1px solid #00695c;
+    color: #00695c;
+    background: white;
+    cursor: pointer;
+    text-align:right;
+    height:32px;
+    outline:none;
+    vertical-align: bottom;
+    border-radius: 10px;
+}

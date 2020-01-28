@@ -1,3 +1,9 @@
+body {
+    background-color: #9ee8de;
+    font-weight: bold;
+    font-size: large;
+}
+
 .product-form {
     width: 20rem;
     max-width: 90%;
@@ -9,19 +15,49 @@
     width: 20rem;
     max-width: 95%;
     margin: 1rem;
+    border-radius: 25px;
 }
 
 .product__title {
     font-size: 1.2rem;
     text-align: center;
 }
+.card__content{
+    margin:0;
+    padding:0;
+}
 
 .product__price {
     text-align: center;
-    color: #4d4d4d;
+    color: #00695c;
     margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    font-family: 'Roboto Slab', serif;
 }
 
 .product__description {
     text-align: center;
+    font-size: 1rem;
+    font-family: 'Roboto Slab', serif;
+}
+
+#quantity:focus {
+    border: none;
+    border-radius: 25px;
+}
+
+#edit-product-container {
+    display: block;
+    border:5px solid white;
+    padding:5rem;
+    margin:auto;
+}
+
+.edit-product-form-control{    
+    display:block;
+}
+
+.edit-product-form-control textarea {
+    width:60%;
 }

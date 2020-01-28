@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 // const stripe = require('stripe')('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
-const checksum_lib = require('../public/paytm/checksum/checksum');
+
 
 //('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
 
@@ -38,7 +38,7 @@ exports.getIndex = (req, res, next) => {
       res.render('shop/index',
         {
           prods: products,
-          pageTitle: 'Shop',
+          pageTitle: 'Yummba!',
           path: '/',
           user: req.user || null,
           admin: process.env.ADMIN

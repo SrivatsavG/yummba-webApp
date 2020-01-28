@@ -173,8 +173,9 @@ exports.postSignup = (req, res, next) => {
       return transporter.sendMail({
         to: email,
         from: 'Yummba!@yummba.com',
-        subject: 'Signup succeeded!',
-        html: '<h1>You successfully signed up!</h1>'
+        subject: 'Yummba! account created',
+        html: 
+        '<h1>Yummba! family welcomes you.</h1><p> We are glad that you have taken another step toward a healthier lifestyle. You can now login and view our products. </p><p>Happy munching!</p>'
       });
     })
     .catch(err => {
@@ -215,7 +216,7 @@ exports.postReset = (req, res, next) => {
   //GENERATE TOKEN
   crypto.randomBytes(32, (err, buffer) => {
     if (err) {
-      console.log("ERROR IN auth.js->postReset->randomBytes"+err);
+      console.log("ERROR IN auth.js->postReset->randomBytes" + err);
       return res.redirect('/reset');
     }
     const token = buffer.toString('hex');
