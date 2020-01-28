@@ -32,16 +32,14 @@
                     <div class="col">
                         <a href="/products/<%= product._id %>" class="btn"><i class="fas fa-info-circle"></i></a>
                     </div>
-                    <div class="col">                        
+                    <div class="col">
                         <% if (isAuthenticated) { %>
                         <%- include('../includes/add-to-cart.ejs', {product: product}) %>
                         <% } %>
                     </div>
                 </div>
-        </div>
-
-        </article>
-        <% } %>
+            </article>
+            <% } %>
         </div>
         <% } else { %>
         <h1>No Products Found!</h1>
