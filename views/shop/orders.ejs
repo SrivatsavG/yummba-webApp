@@ -7,7 +7,7 @@
         <% if (orders.length <= 0) { %>
         <h1>Nothing there!</h1>
         <% } else { %>
-        <ul class="orders">
+        <ul class="ordersList">
             <% orders.forEach(order => { %>
             <li class="orders__item">
                 <h1># <%= order._id %>- <a href='/orders/<%= order._id %>'>Invoice</a> </h1>

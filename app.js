@@ -2,8 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const https = require('https');
 
-
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
@@ -18,9 +16,6 @@ const morgan = require('morgan');
 
 const errorController = require('./controllers/error');
 const User = require("./models/user");
-
-//AWS
-
 
 //
 
@@ -110,10 +105,20 @@ app.use((req, res, next) => {
 
 app.use((req, user, next) => {
 
+  if(req.session.isLoggedIn){
+    console.log("ISLOGGED IN")
+  }
+  else {
+    console.log("NOT ISLOGGED IN")
+
+  }
+
   //IF NO USER HAS SIGNED IN , MOVE ON
   if (!req.session.user) {
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+    console.log("NOBODY HAS SIGNED IN");
     return next();
-  }
+  } 
 
   //IF USER HAS SIGNED IN 
   User.findById(req.session.user._id)
@@ -121,9 +126,12 @@ app.use((req, user, next) => {
     //So we need error handling to handle the case where the user is not found
     .then(user => {
       if (!user) { //User not found
+        console.log("USER NOT FOUND")
         return next()
       }
       req.user = user;
+      console.log("USER IS" + user);
+      console.log("REQ.USER is" + req.user);
       next();
     })
     //THIS FIRES when there is a technical issue with findById
@@ -163,5 +171,4 @@ mongoose
     console.log("==============MONGOOSE ERROR=============");
     console.log(err);
   });
-
 

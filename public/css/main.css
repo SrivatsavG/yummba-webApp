@@ -157,7 +157,6 @@ form {
 }
 
 .mobile-nav__item {
-  margin: 1rem;
   padding: 0;
 }
 
@@ -295,11 +294,10 @@ form {
 }
 
 .dropbtn {
-  background-color: #ffc9b5
-;
+  background-color: #ffc9b5;
   width: 10rem;
   color: white;
-  padding: 16px;
+  padding:1rem;
   border: none;
   cursor: pointer;
   outline: none!important;
@@ -327,8 +325,7 @@ form {
   display: none;
   position: absolute;
   right: 0;
-  background-color: #ffc9b5
-;
+  background-color: #ffc9b5;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
