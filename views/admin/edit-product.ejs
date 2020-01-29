@@ -12,7 +12,8 @@
         <% } %>
         <div id="edit-product-container" class="container">
 
-            <form class="edit-product-product-form" action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>"
+            <!--ORIGINAL-->
+            <!-- <form class="edit-product-product-form" action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>"
                 method="POST" enctype='multipart/form-data'>
                 <div class="edit-product-form-control">
                     <label for="title">Title</label>
@@ -21,6 +22,42 @@
                 <div class="edit-product-form-control">
                     <label for="imageUrl">Image</label>
                     <input type="file" name="image" id="image"
+                        value="<% if (editing) { %><%= product.imageUrl %><% } %>">
+                </div>
+                 OLD
+                    <div class="form-control">
+                    <label for="imageUrl">Image URL</label>
+                    <input type="text" name="imageUrl" id="imageUrl" value="<% if (editing) { %><%= product.imageUrl %><% } %>">
+                </div> -->
+                <!-- <div class="edit-product-form-control">
+                    <label for="price">Price</label>
+                    <input type="number" name="price" id="price" step="0.01"
+                        value="<% if (editing) { %><%= product.price %><% } %>">
+                </div>
+                <div class="edit-product-form-control">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description"
+                        rows="5"><% if (editing) { %><%= product.description %><% } %></textarea>
+                </div>
+                <% if (editing) { %>
+                <input type="hidden" value="<%= product._id %>" name="productId">
+                <% } %>
+                <input type="hidden" name='_csrf' value="<%= csrfToken %>">
+                <button class="edit-product-btn" type="submit"><% if (editing) { %>Update Product<% } else { %>Add
+                    Product<% } %></button>
+            </form> --> 
+
+            <!--DUPLICATE-->
+
+            <form class="edit-product-product-form" action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>"
+                method="POST" enctype='multipart/form-data'>
+                <div class="edit-product-form-control">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" value="<% if (editing) { %><%= product.title %><% } %>">
+                </div>
+                <div class="edit-product-form-control">
+                    <label for="imageUrl">Image URL</label>
+                    <input type="text" name="imageUrl" id="imageUrl"
                         value="<% if (editing) { %><%= product.imageUrl %><% } %>">
                 </div>
                 <!-- OLD
@@ -45,8 +82,13 @@
                 <button class="edit-product-btn" type="submit"><% if (editing) { %>Update Product<% } else { %>Add
                     Product<% } %></button>
             </form>
+
+
         </div>
-
-
     </main>
+
+
+    <script>
+    </script>
+
     <%- include('../includes/end.ejs') %>

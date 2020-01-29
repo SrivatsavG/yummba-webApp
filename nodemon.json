@@ -5,6 +5,13 @@
         "MONGO_DB": "yummba_max",
         "STRIPE_KEY": "sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0",
         "ADMIN" : "5e15612cf126790d7c32128e",
+
+        "AWS_ACCESS_KEY_ID":"AKIAIXN4DZUZOEWPFDLQ",
+        "AWS_SECRET_ACCESS_KEY":"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",
+        "S3_BUCKET_NAME":"yummba",
+        "AWS_REGION":"us-east-2",
+
+
         "MID":"WopolV35383146897967",
         "PAYTM_MERCHANT_KEY":"LKVKUJIKc&Zg#ZAc",
         "WEBSITE":"WEBSTAGING",

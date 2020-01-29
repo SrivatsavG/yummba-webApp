@@ -4,11 +4,13 @@ const fileHelper = require('../util/file');
 
 const ObjectId = mongodb.ObjectID;
 
+
 //
 
 //added
 exports.getAddProduct = (req, res, next) => {
 
+  
   let user = req.user || null;
 
   if (user._id.toString() == process.env.ADMIN) {
@@ -32,33 +34,71 @@ exports.getAddProduct = (req, res, next) => {
   }
 };
 
+//-------------------------------ORIGINAL-------------------------
+
+// exportsddProduct = (req, res, next) => {
+//   const title = req.body.title;
+//   const image = req.file; // THIS CHANGED IN ORDER TO UPLOAD FILES
+//   const price = req.body.price;
+//   const description = req.body.description;
+
+//   if (!image) { // THERE WILL BE NO IMAGE IF IT IS NOT PNG,JPG OR JPEG
+//     //RETURN 404 PAGE
+//     console.log("===========!IMAGE REACHED============");
+//     return res.status(422).render("admin/edit-product", {
+//       pageTitle: 'Add product',
+//       path: '/admin/add-product',
+//       editing: false,
+//       product: {
+//         title: title,
+//         price: price,
+//         description: description,
+//         user: req.user || null,
+//         admin:process.env.ADMIN
+//       },
+//       errorMessage: "Attached file should be of type png, jpeg or jpg",
+//       validationErrors: []
+//     });
+//   }
+//   //THIS CODE IS REACHED ONLY IF FILTER IS PASSED
+
+//   const imageUrl = image.path; // the address in the filesystem
+
+//   const product = new Product({
+//     title: title,
+//     price: price,
+//     description: description,
+//     imageUrl: imageUrl,
+//     userId: req.user
+//   });
+//   product
+//     .save()
+//     .then(result => {
+//       // console.log(result);
+//       console.log('Created Product');
+//       res.redirect('/admin/products');
+//     })
+//     .catch(err => {
+//       const error = new Error(err);
+//       //
+//       error.httpStatusCode = 500;
+//       //when we pass next with an error as an argument, we tell express to skill all other 
+//       //middleware and go to the error handling middleware
+//       return next(error);
+//     });
+// };
+
 exports.postAddProduct = (req, res, next) => {
   const title = req.body.title;
-  const image = req.file; // THIS CHANGED IN ORDER TO UPLOAD FILES
+  const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
 
-  if (!image) { // THERE WILL BE NO IMAGE IF IT IS NOT PNG,JPG OR JPEG
-    //RETURN 404 PAGE
-    console.log("===========!IMAGE REACHED============");
-    return res.status(422).render("admin/edit-product", {
-      pageTitle: 'Add product',
-      path: '/admin/add-product',
-      editing: false,
-      product: {
-        title: title,
-        price: price,
-        description: description,
-        user: req.user || null,
-        admin:process.env.ADMIN
-      },
-      errorMessage: "Attached file should be of type png, jpeg or jpg",
-      validationErrors: []
-    });
-  }
-  //THIS CODE IS REACHED ONLY IF FILTER IS PASSED
+  console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 
-  const imageUrl = image.path; // the address in the filesystem
+  console.log(title);
+  console.log(imageUrl);
+
 
   const product = new Product({
     title: title,
@@ -130,11 +170,53 @@ exports.getEditProduct = (req, res, next) => {
   }
 };
 
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ORIGINAL%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+// exports.postEditProduct = (req, res, next) => {
+//   const prodId = req.body.productId;
+//   const updatedTitle = req.body.title;
+//   const updatedPrice = req.body.price;
+//   const image = req.image; // CHANGED THIS FOR FILE UPLOAD
+//   const updatedDesc = req.body.description;
+
+
+//   Product.findById(prodId)
+//     .then(foundProduct => {
+
+//       foundProduct.title = updatedTitle;
+//       foundProduct.description = updatedDesc;
+//       foundProduct.price = updatedPrice;
+
+//       if (image) { // ONLY IF IT PASSES THE FILER SET THE NEW URL
+//         fileHelper.deleteFile(foundProduct.imageUrl);
+//         foundProduct.imageUrl = image.path;
+
+//       }
+
+//       // product will be a full mongoose object. Save will update the object on its own
+//       return foundProduct.save().then(result => {
+//         console.log("============Product updated==========");
+//         res.redirect("/admin/products");
+//       })
+//     })
+
+//     .catch(err => {
+//       const error = new Error(err);
+//       //
+//       error.httpStatusCode = 500;
+//       //when we pass next with an error as an argument, we tell express to skill all other 
+//       //middleware and go to the error handling middleware
+//       return next(error);
+//     });
+// };
+
+
+
 exports.postEditProduct = (req, res, next) => {
   const prodId = req.body.productId;
   const updatedTitle = req.body.title;
   const updatedPrice = req.body.price;
-  const image = req.file; // CHANGED THIS FOR FILE UPLOAD
+  const updatedImageUrl = req.body.imageUrl; // CHANGED THIS FOR FILE UPLOAD
   const updatedDesc = req.body.description;
 
 
@@ -144,12 +226,7 @@ exports.postEditProduct = (req, res, next) => {
       foundProduct.title = updatedTitle;
       foundProduct.description = updatedDesc;
       foundProduct.price = updatedPrice;
-
-      if (image) { // ONLY IF IT PASSES THE FILER SET THE NEW URL
-        fileHelper.deleteFile(foundProduct.imageUrl);
-        foundProduct.imageUrl = image.path;
-
-      }
+      foundProduct.imageUrl = updatedImageUrl;
 
       // product will be a full mongoose object. Save will update the object on its own
       return foundProduct.save().then(result => {
@@ -167,7 +244,6 @@ exports.postEditProduct = (req, res, next) => {
       return next(error);
     });
 };
-
 
 exports.getProducts = (req, res, next) => {
 
