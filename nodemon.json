@@ -4,7 +4,7 @@
         "MONGO_PASSWORD": "0904",
         "MONGO_DB": "yummba_max",
         "STRIPE_KEY": "sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0",
-        "ADMIN" : "5e31afc1e1e5760004b60e37",
+        "ADMIN" : "5e32c061f8da2c10fd647428",
 
         "AWS_ACCESS_KEY_ID":"AKIAIXN4DZUZOEWPFDLQ",
         "AWS_SECRET_ACCESS_KEY":"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",

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-// const stripe = require('stripe')('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
+const stripe = require('stripe')('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
+const User = require('../models/user');
 
 
 //('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
@@ -151,18 +152,34 @@ exports.getCheckout = (req, res, next) => {
       products.forEach(p => {
         total += p.quantity * p.productId.price;
       });
-      console.log(products);
-      console.log(total);
-    })
-    .then(result => {
 
-      res.render('shop/checkout2', {
+      return stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items: products.map(p => {
+          return {
+            name: p.productId.title,
+            description: p.productId.description,
+            amount: p.productId.price * 100,
+            currency: 'inr',
+            quantity: p.quantity
+          };
+        }),
+        success_url: req.protocol + '://' + req.get('host') + '/checkout/success',
+        cancel_url: req.protocol + '://' + req.get('host') + '/checkout/cancel'
+      });
+
+    })
+    .then(session => {
+
+
+      res.render('shop/checkoutPayment', {
         path: '/checkout',
         pageTitle: 'Checkout',
         user: req.user || null,
         admin: process.env.ADMIN,
         products: products,
-        totalSum: total
+        totalSum: total,
+        sessionId: session.id
 
       })
     })
@@ -251,7 +268,9 @@ exports.getCheckoutSuccess = (req, res, next) => {
       const order = new Order({
         user: {
           email: req.user.email,
-          userId: req.user
+          userId: req.user,
+          address:req.user.address,
+          mobile:req.user.mobile
         },
         products: products
       });
@@ -381,11 +400,19 @@ exports.getInvoice = (req, res, next) => {
       pdfDoc.pipe(fs.createWriteStream(invoicePath));
       pdfDoc.pipe(res);
 
-      pdfDoc.fontSize(26).text('Invoice', {
-        underline: true
+      pdfDoc.fontSize(26).text('Yummba!', {
+        underline: true,
+        align: 'center'
       });
-      pdfDoc.text('-----------------------');
+
+      pdfDoc.text('------------------------------------------------------');
+
+
       let totalPrice = 0;
+      pdfDoc.fontSize(16).text('Order id: ' + orderId);
+      pdfDoc.text('------------------------------------------------------');
+      pdfDoc.fontSize(16).text("Items purchased");
+      pdfDoc.fontSize(16).text("");
       order.products.forEach(prod => {
         totalPrice += prod.quantity * prod.product.price;
         pdfDoc
@@ -395,13 +422,23 @@ exports.getInvoice = (req, res, next) => {
             ' - ' +
             prod.quantity +
             ' x ' +
-            '$' +
+            'Rs ' +
             prod.product.price
           );
       });
-      pdfDoc.text('---');
-      pdfDoc.fontSize(20).text('Total Price: $' + totalPrice);
-
+      pdfDoc.fontSize(16).text('------------------------------------------------------');
+      pdfDoc.fontSize(20).text('Total Price: Rs ' + totalPrice);
+      pdfDoc.fontSize(26).text('------------------------------------------------------');
+      pdfDoc.fontSize(16).text("Delivery address");
+      pdfDoc.fontSize(16).text(order.user.address);
+      pdfDoc.fontSize(26).text('------------------------------------------------------');
+      pdfDoc.fontSize(16).text("Contact");
+      pdfDoc.fontSize(16).text(order.user.mobile);
+      pdfDoc.fontSize(26).text('------------------------------------------------------');
+      pdfDoc.fontSize(16).text('We hope you enjoy snacking on Yummbas!', {
+        underline: true,
+        align: 'center'
+      });
       pdfDoc.end();
       // fs.readFile(invoicePath, (err, data) => {
       //   if (err) {
@@ -423,3 +460,23 @@ exports.getInvoice = (req, res, next) => {
 
 
 
+exports.postSubmitAddress = (req, res, next) => {
+  const address = req.body.address1 + ',' + req.body.address2 + ',' + req.body.city + ',' + req.body.state + ',' + req.body.pincode;
+  const mobile = req.body.mobile;
+  console.log("DELIVERY DETAILS");
+  console.log(address, mobile, req.user._id);
+
+  User.findById(req.user._id)
+    .then(user => {
+      user.address = address;
+      user.mobile = mobile;
+
+      return user.save()
+        .then(result => {
+          console.log("UPDATED USER");
+          console.log(req.user);
+          res.redirect('/checkout');
+        });
+    })
+
+};

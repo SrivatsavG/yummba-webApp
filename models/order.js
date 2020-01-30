@@ -10,14 +10,17 @@ const orderSchema = new Schema({
             product: { type: Object, required: true },
             quantity: { type: Number, required: true }
 
+
         }
     ],
 
     //USER OBJECT WITH NAME AND ID
     user: {
         email: { type: String, required: true },
-        userId: { type: Schema.Types.ObjectId, required: true, ref: "User" }
-        
+        userId: { type: Schema.Types.ObjectId, required: true, ref: "User" },
+        address: { type: String },
+        mobile: { type: String }
+
     }
 });
 

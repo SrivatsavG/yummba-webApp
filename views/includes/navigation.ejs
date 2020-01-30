@@ -42,7 +42,7 @@
                         <button class="dropbtn username"><i class="fas fa-user"></i> <%= name %></button>
                         <div class="dropdown-content">
                             <a href="/cart">CART</a>
-                            <a href="/cart">ORDERS</a>
+                            <a href="/orders">ORDERS</a>
                             <li>                
                                 <form action="/logout" method="post">
                                     <input type="hidden" name='_csrf' value="<%= csrfToken %>">

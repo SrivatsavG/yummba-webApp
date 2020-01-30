@@ -1,35 +1,76 @@
 <%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/cart.css">
-    </head>
+<link rel="stylesheet" href="/css/cart.css">
+</head>
 
-    <body>
-        <%- include('../includes/navigation.ejs') %>
-        <main>
-            <% if (products.length > 0) { %>
-                <ul class="cart__item-list">
-                    <% products.forEach(p => { %>
-                        <li class="cart__item">
-                            <h1><%= p.productId.title %></h1>
-                            <h2>Quantity: <%= p.quantity %></h2>
-                            <form action="/cart-delete-item" method="POST">
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+
+        <% if (products.length > 0) { %>
+
+        <div class="fullPageContainer container">
+            <div class="fullPageRow row d-flex justify-content-around">
+                <div class="col">
+                    <ul class="cart__item-list">
+                        <% products.forEach(p => { %>
+                        <li class="cart__item row d-flex justify-content-around">
+                            <p class="cart__item-title flex-column"><%= p.productId.title %></p>
+                            <p class="cart__item-quantity flex-column"> Quantity: <%= p.quantity %></p>
+                            <form class="flex-column" action="/cart-delete-item" method="POST">
                                 <input type="hidden" value="<%= p.productId._id %>" name="productId">
-                                <input type ="hidden" name= '_csrf' value="<%= csrfToken %>">
-                                <button id="deleteButton" class="btn danger" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                <input type="hidden" name='_csrf' value="<%= csrfToken %>">
+                                <button id="deleteButton" class="btn danger" type="submit"><i
+                                        class="fas fa-trash-alt"></i></button>
                             </form>
                         </li>
-                    <% }) %>
-                </ul>
-                <hr>
-                <div class="centered">
-                    <!-- <form action="/create-order" method="POST">
-                        <input type ="hidden" name= '_csrf' value="<%= csrfToken %>">
-                        <button type="submit" class="btn">Order Now!</button>
-                    </form> -->
-                    <a id="reviewButton" class='btn' href="/checkout">Review order</a>
+                        <% }) %>
+                    </ul>
+                    <hr>
+                    <div class="centered">
+                        <!-- <form action="/create-order" method="POST">
+                                <input type ="hidden" name= '_csrf' value="<%= csrfToken %>">
+                                <button type="submit" class="btn">Order Now!</button>
+                            </form> -->
+
+                    </div>
                 </div>
-                
-            <% } else { %>
-                <h1>No Products in Cart!</h1>
-            <% } %>
-        </main>
-        <%- include('../includes/end.ejs') %>
+                <div id="submitAddressContainer" class="col">
+                    <form action="/submitAddress" method="POST">
+                        <div id="addressRow" class="row d-flex justify-content-around">
+                            <div class="flex-column centered">
+                                <span>Delivery address</span>
+                                <input class="centered" type="text " name="address1" placeholder="Address line 1"
+                                    required>
+                                <input class="centered" type="text" name="address2" placeholder="Address line 2"
+                                    required>
+                                <input class="centered" type="text" name="city" placeholder="City" required>
+                                <input class="centered" type="text" name="state" placeholder="State" required>
+                                <input class="centered" type="number" name="pincode" placeholder="Pincode" minlength="6"
+                                    maxlength="6" required>
+                            </div>
+                        </div>
+                        <div id="mobileRow" class="row d-flex justify-content-around">
+                            <div class="flex-column centered">
+                                <span>Mobile No</span>
+                                <input class="centered" type="number" name="mobile" placeholder="" minlength="10"
+                                    maxlength="10" required>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-around">
+                            <div class="flex-column centered">
+                                <input type="hidden" name='_csrf' value="<%= csrfToken %>">
+                                <input id="reviewButton" type="submit" value="Review Order">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <% } else { %>
+        <h1>No Products in Cart!</h1>
+        <% } %>
+    </main>
+    <%- include('../includes/end.ejs') %>
