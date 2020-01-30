@@ -45,14 +45,14 @@
                                     required>
                                 <input class="centered" type="text" name="city" placeholder="City" required>
                                 <input class="centered" type="text" name="state" placeholder="State" required>
-                                <input class="centered" type="number" name="pincode" placeholder="Pincode" minlength="6"
-                                    maxlength="6" required>
+                                <input class="centered" type="number" name="pincode" placeholder="Pincode" min="100000"
+                                    maxlength="999999" required>
                             </div>
                         </div>
                         <div id="mobileRow" class="row d-flex justify-content-around">
                             <div class="flex-column centered">
                                 <span>Mobile No</span>
-                                <input class="centered" type="number" name="mobile" placeholder="" minlength="10"
+                                <input class="centered" type="tel" name="mobile" placeholder="" minlength="10"
                                     maxlength="10" required>
                             </div>
                         </div>
