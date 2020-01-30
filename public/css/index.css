@@ -73,7 +73,7 @@ main {
     color: white;    
 }
 
-.contanct-last-row{
+.contact-last-row{
     padding-bottom: 2rem;
 }
 
@@ -88,6 +88,31 @@ main {
     margin: 0;
     justify-content: center;
     align-items: center;
+}
+
+.contact-item-col a{
+    text-decoration: none;
+    color:white;
+    line-height:1.5;
+}
+
+
+.contact-item-col a:hover 
+{
+     color:white; 
+     text-decoration:none; 
+     cursor:pointer;  
+}
+
+.contact-item-col p{
+    padding:0;
+    line-height:1.5;
+    margin:0;
+}
+
+
+.contact-item-col #contact-item-col-mobile{
+    cursor:default;
 }
 
 .contact-item {
@@ -108,6 +133,9 @@ main {
         max-width: 100%;
     }
     .about-banner {
+        font-size: 1rem;
+    }
+    .contact-item {
         font-size: 1rem;
     }
 }
