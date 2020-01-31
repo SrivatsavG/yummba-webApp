@@ -3,6 +3,14 @@ const path = require('path');
 const stripe = require('stripe')('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
 const User = require('../models/user');
 const Blog = require('../models/blog');
+const nodemailer = require('nodemailer');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
+
+const transporter = nodemailer.createTransport(sendgridTransport({
+  auth: {
+    api_key: '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'
+  }
+}));
 
 
 //('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
@@ -276,10 +284,18 @@ exports.getCheckoutSuccess = (req, res, next) => {
         products: products
       });
       return order.save();
+    })  
+    .then(() => {
+      transporter.sendMail({
+        to:req.user.email,
+        from:'yummba@yummba.com',
+        subject:'Yummba order placed',
+        html:`<h1>Thank you for shopping with us.</h1><p>Your products will be delivered to ${req.user.address}</p><p>For support, please contact</p><p>chandni@yummba.in</p><p>9324621020</p>`
+        }); 
     })
     .then(result => {
       return req.user.clearCart();
-    })
+    })  
     .then(() => {
       res.redirect('/orders');
     })
