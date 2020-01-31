@@ -1,5 +1,6 @@
 const mongodb = require("mongodb");
 const Product = require('../models/product');
+const Blog = require('../models/blog');
 const fileHelper = require('../util/file');
 
 const ObjectId = mongodb.ObjectID;
@@ -10,7 +11,7 @@ const ObjectId = mongodb.ObjectID;
 //added
 exports.getAddProduct = (req, res, next) => {
 
-  
+
   let user = req.user || null;
 
   if (user._id.toString() == process.env.ADMIN) {
@@ -21,8 +22,8 @@ exports.getAddProduct = (req, res, next) => {
       errorMessage: '',
       validationErrors: [],
       user: req.user || null,
-      admin:process.env.ADMIN,
-      
+      admin: process.env.ADMIN,
+
     });
   } else {
     const error = new Error(err);
@@ -148,7 +149,7 @@ exports.getEditProduct = (req, res, next) => {
           errorMessage: null,
           validationErrors: [],
           user: req.user || null,
-          admin:process.env.ADMIN
+          admin: process.env.ADMIN
         });
       })
       .catch(err => {
@@ -260,7 +261,7 @@ exports.getProducts = (req, res, next) => {
           pageTitle: 'Admin Products',
           path: '/admin/products',
           user: req.user || null,
-          admin:process.env.ADMIN
+          admin: process.env.ADMIN
         });
       })
       .catch(err => {
@@ -335,3 +336,57 @@ exports.deleteProduct = (req, res, next) => {
     return next(error);
   }
 };
+
+
+exports.getAddBlog = (req, res, next) => {
+  let user = req.user || null;
+
+  if (user._id.toString() == process.env.ADMIN) {
+    res.render('admin/add-blog', {
+      pageTitle: 'Add Blog',
+      path: '/admin/add-blog',
+      user: req.user || null,
+      admin: process.env.ADMIN,
+
+    });
+  } else {
+    const error = new Error(err);
+    //
+    error.httpStatusCode = 500;
+    //when we pass next with an error as an argument, we tell express to skill all other 
+    //middleware and go to the error handling middleware
+    return next(error);
+  }
+}
+
+
+
+exports.postAddBlog = (req, res, next) => {
+  const title = req.body.title;
+  const imageUrl = req.body.imageUrl;
+  const description = req.body.description;
+  const blogUrl= req.body.blogUrl;
+
+  const blog = new Blog({
+    title: title,
+    description: description,
+    imageUrl: imageUrl,
+    blogUrl : blogUrl
+  });
+
+  blog
+    .save()
+    .then(result => {
+      // console.log(result);
+      console.log('Created Blog');
+      res.redirect('/admin/add-blog');
+    })
+    .catch(err => {
+      const error = new Error(err);
+      //
+      error.httpStatusCode = 500;
+      //when we pass next with an error as an argument, we tell express to skill all other 
+      //middleware and go to the error handling middleware
+      return next(error);
+    });
+}

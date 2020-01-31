@@ -20,9 +20,10 @@
                     <p id="description"><%= product.description %></p>
                     <p id="price">Price: Rs <%= product.price %></p>
 
-                    <% if (isAuthenticated) { %>
+                    <!-- <% if (isAuthenticated) { %>
+                        <%- include('../includes/add-to-cart.ejs') %>
+                    <% } %> -->
                     <%- include('../includes/add-to-cart.ejs') %>
-                    <% } %>
                 </div>
             </div>
         </div>

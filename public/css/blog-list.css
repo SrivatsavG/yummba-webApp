@@ -1,0 +1,41 @@
+body {
+    background-color: #9ee8de;
+    font-family: 'Roboto Slab', serif;
+}
+
+.grid {
+    margin: 2rem;
+    border-radius: 25px;
+}
+
+.grid a {
+    text-decoration: none;
+    color: black;
+}
+
+.blog-item {
+    margin-bottom: 2rem;
+    background-color: white;
+    border-radius: 50px;
+}
+
+.blog-item-container {
+    margin: 0;
+    padding: 0;
+}
+
+.blog-item-container .row {
+    width: 100%;
+    margin: 0;
+}
+
+.card__image {
+    display: flex;
+    max-width: 300px;
+    height: auto;
+    margin: auto;
+    margin-bottom: 2rem;
+    border: 3px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

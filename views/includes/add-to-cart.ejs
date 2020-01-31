@@ -1,14 +1,7 @@
 <form class="addToCart-form" action="/cart" method="post">
-    <!-- <div class="row d-flex justify-content-end">
-        <div class="col">
-            <input class="quantity" id="quantity" type="number" name='quantity' min="1" step='1' value='1'>
-        </div>
-        <div class="col">
-            <button class="btn" type="submit"><i class="fas fa-cart-plus"></i></button>
-        </div>
-    </div> -->
+    
     <input class="quantity" id="quantity" type="number" name='quantity' min="1" step='1' value='1'>
-
+    
     <button class="btn" type="submit"><i class="fas fa-cart-plus"></i></button>
 
     <input type="hidden" name='_csrf' value="<%= csrfToken %>">

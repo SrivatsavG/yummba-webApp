@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const stripe = require('stripe')('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
 const User = require('../models/user');
+const Blog = require('../models/blog');
 
 
 //('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
@@ -269,8 +270,8 @@ exports.getCheckoutSuccess = (req, res, next) => {
         user: {
           email: req.user.email,
           userId: req.user,
-          address:req.user.address,
-          mobile:req.user.mobile
+          address: req.user.address,
+          mobile: req.user.mobile
         },
         products: products
       });
@@ -479,4 +480,25 @@ exports.postSubmitAddress = (req, res, next) => {
         });
     })
 
+};
+
+exports.getBlogs = (req, res, next) => {
+  Blog.find() // mongoose method:- gives all products
+    .then(blogs => {
+      res.render('shop/blog-list', {
+        blogs: blogs,
+        pageTitle: 'Blog',
+        path: '/blogs',
+        user: req.user || null,
+        admin: process.env.ADMIN
+      });
+    })
+    .catch(err => {
+      const error = new Error(err);
+      //
+      error.httpStatusCode = 500;
+      //when we pass next with an error as an argument, we tell express to skill all other 
+      //middleware and go to the error handling middleware
+      return next(error);
+    });
 };

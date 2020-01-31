@@ -20,11 +20,15 @@ router.post('/add-product',isAuth, adminController.postAddProduct);
 // // /admin/products => GET
 router.get('/products', isAuth,adminController.getProducts);
 
-
 router.get('/edit-product/:productId',isAuth, adminController.getEditProduct);
 
 router.post('/edit-product',isAuth, adminController.postEditProduct);
 
 router.delete('/product/:productId', isAuth,adminController.deleteProduct);
+
+router.get('/add-blog', isAuth,adminController.getAddBlog);
+
+router.post('/add-blog', isAuth,adminController.postAddBlog);
+
 
 module.exports = router;
