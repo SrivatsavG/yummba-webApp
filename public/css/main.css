@@ -42,8 +42,8 @@ form {
 .main-header {
   width: 100%;
   height: 5rem;
-  background-color: #ffc9b5
-;
+  /* background-color: #ffc9b5; */
+  background-color: transparent;
   padding: 0 1.5rem;
   display: flex;
   align-items: center;

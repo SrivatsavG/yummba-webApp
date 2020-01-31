@@ -19,6 +19,7 @@ body {
 
 main {
   padding:0;
+  height: 100%;
 }
 
 .container{
@@ -175,6 +176,23 @@ main {
 
 #mobileRow input:focus{
   outline:none;
+}
+
+.emptyCart {
+  height:100%;
+  width: 100%;
+  margin: 0;
+  margin-top: 5rem;
+  padding:0;
+}
+.emptyCart p{
+  font-size: 3rem;
+  color: white;
+}
+.emptyCart img{
+  
+  margin: 0;
+  padding:0;
 }
 
 -webkit-inner-spin-button, -webkit-outer-spin-button {

@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-    background-color: #6AC9DF;
+    background-color: #ffc9b5;
     color: white;
     font-weight: bold;
     font-size: large;
@@ -22,6 +22,7 @@ main {
 .indexPageContainer {
     padding: 0;
 }
+
 
 .about {
     background-image: url("/images/webpage_images/bg2.png");

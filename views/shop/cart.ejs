@@ -70,7 +70,11 @@
 
 
         <% } else { %>
-        <h1>No Products in Cart!</h1>
+            <div class="emptyCart centered">
+                <p>Looks like your cart is empty...</p>
+                <img src="/images/webpage_images/emptycart.png">
+            </div>
+        
         <% } %>
     </main>
     <%- include('../includes/end.ejs') %>

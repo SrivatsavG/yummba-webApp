@@ -43,14 +43,15 @@
                     <div class="row d-flex justify-content-around">
                         <div class="flex-column">
                             <% if (isAuthenticated) { %>
-                                <% if (user._id.toString() == admin ) { %>
-                                    <div>
-                                        <input type="hidden" value="<%= blog._id %>" name="blogId">
-                                        <input type="hidden" name='_csrf' value="<%= csrfToken %>">
-                                        <button class="btn danger" type="button" onclick="deleteBlog(this)"><i class="fas fa-trash-alt"></i></button>
-                                    <% } %>
-                                    </div>
-                                    
+                            <% if (user._id.toString() == admin ) { %>
+                            <div>
+                                <input type="hidden" value="<%= blog._id %>" name="blogId">
+                                <input type="hidden" name='_csrf' value="<%= csrfToken %>">
+                                <button class="btn danger" type="button" onclick="deleteBlog(this)"><i
+                                        class="fas fa-trash-alt"></i></button>
+                                <% } %>
+                            </div>
+
                             <% } %>
 
                         </div>
@@ -65,10 +66,8 @@
         <% } %>
     </main>
 
-   
+
 
     <%- include('../includes/end.ejs') %>
 
     <script src='/js/admin.js'></script>
-
-  
