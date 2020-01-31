@@ -303,8 +303,9 @@ exports.deleteProduct = (req, res, next) => {
         if (!foundProduct) {
           return next(new Error('Product not found'));
         }
-        fileHelper.deleteFile(foundProduct.imageUrl);
-        //delete from database
+
+        // fileHelper.deleteFile(foundProduct.imageUrl);
+        // //delete from database
 
         return Product.findByIdAndRemove(prodId) //mongoose method        
       })
@@ -365,13 +366,13 @@ exports.postAddBlog = (req, res, next) => {
   const title = req.body.title;
   const imageUrl = req.body.imageUrl;
   const description = req.body.description;
-  const blogUrl= req.body.blogUrl;
+  const blogUrl = req.body.blogUrl;
 
   const blog = new Blog({
     title: title,
     description: description,
     imageUrl: imageUrl,
-    blogUrl : blogUrl
+    blogUrl: blogUrl
   });
 
   blog
@@ -389,4 +390,56 @@ exports.postAddBlog = (req, res, next) => {
       //middleware and go to the error handling middleware
       return next(error);
     });
+}
+
+exports.deleteBlog = (req, res, next) => {
+  console.log("REACHED ROUTE");
+
+  let user = req.user || null;
+
+  if (user._id.toString() == process.env.ADMIN) {
+
+    //ASYNCHRONOUS====>delete requests are not allowed to have req.body(convention) so we do in params
+
+    const blogId = req.params.blogId;
+
+    //delete from system
+    Blog.findByIdAndRemove(blogId)
+      .then(foundBlog => {
+        if (!foundBlog) {
+          return next(new Error('Blog not found'));
+        }
+
+        // fileHelper.deleteFile(foundProduct.imageUrl);
+        //delete from database
+
+        return Blog.findByIdAndRemove(blogId) //mongoose method        
+      })
+      .then(() => {
+        console.log('DESTROYED BLOG');
+
+        //ASYNCHRONOUS=====>NOT REDIRECT ANYMORE
+        //res.redirect('/admin/products');
+
+        res.status(200).json({ message: 'success' });
+      })
+      .catch(err => {
+        //ASYCNCHRONOUSE===>CANNOT USE OUR DEFAULT ERROR HANDLER
+        // const error = new Error(err);
+        // //
+        // error.httpStatusCode = 500;
+        // //when we pass next with an error as an argument, we tell express to skip all other 
+        // //middleware and go to the error handling middleware
+        // return next(error);
+
+        res.status(500).json({ message: 'deleting failed' });
+      });
+  } else {
+    const error = new Error(err);
+    //
+    error.httpStatusCode = 500;
+    //when we pass next with an error as an argument, we tell express to skill all other 
+    //middleware and go to the error handling middleware
+    return next(error);
+  }
 }
