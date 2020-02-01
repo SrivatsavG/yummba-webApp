@@ -3,7 +3,7 @@
         "MONGO_USER": "srivatsav",
         "MONGO_PASSWORD": "0904",
         "MONGO_DB": "yummba_max",
-        "STRIPE_KEY": "sk_test_P1YXDAsgkbwKFDNUuGMAtUHu008lnuVe1R",
+        "STRIPE_KEY": "sk_live_QHYw229i9MryHccb6H7VQBn300GWjAAn91",
         "ADMIN" : "5e32c061f8da2c10fd647428",
 
         "AWS_ACCESS_KEY_ID":"AKIAIXN4DZUZOEWPFDLQ",

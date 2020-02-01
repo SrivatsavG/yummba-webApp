@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const stripe = require('stripe')('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
+const stripe = require('stripe')('sk_live_QHYw229i9MryHccb6H7VQBn300GWjAAn91');
 const User = require('../models/user');
 const Blog = require('../models/blog');
 const nodemailer = require('nodemailer');
@@ -13,9 +13,6 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 }));
 
 
-//('sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0');
-
-//
 const PDFDocument = require('pdfkit');
 
 const Product = require('../models/product');
