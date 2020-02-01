@@ -6,8 +6,7 @@ body {
 }
 
 #signup-container {
-  margin-bottom: 5rem;
-  margin-top: 2rem;
+  margin:auto;
   width: 100%;
 }
 
@@ -21,17 +20,74 @@ body {
   margin-top: 2rem;
 }
 
-#signup-text {
+.signInImage {
+  padding:0;
+  display: none;
+}
+
+.signInImage img{
+  width:100%;
+  height:auto;
+  max-width: 500px;
+  max-height: 500px;
+  margin:auto;
+}
+
+@media (min-width: 992px) {
+  .signInImage {
+    display: block;
+  }
+}
+
+#signup-text-container {
   font-weight: bold;
   margin-top: 5rem;
   text-align: center;
-  padding:2rem;
+  padding:1rem;
   padding-top: 1rem;
   margin-bottom: 5rem;
   letter-spacing: 1px;
   font-size: 3rem;
   font-family: 'Roboto Slab', serif;
 }
+
+#signup-text-container img{
+  width: 100%;
+  height: auto;
+  display: none;
+  opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+  #signup-text-container img{
+    display: block;
+  }
+}
+
+#signup-text-container__text {
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:white;
+  font-size: 1rem;
+  text-align: justify;
+  word-wrap: break-word;
+  padding:0 2rem;
+}
+
+@media (min-width: 500px) {
+  #signup-text-container__text{
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #signup-text-container__text{
+    font-size: 2.5rem;
+  }
+}
+
 
 .signup-form-container {
   margin: auto;
@@ -46,8 +102,7 @@ body {
   border-radius: 25px;
   color: white;
   padding: 2rem;
-  background-color: #ffc9b5
-;
+  background-color: #ffc9b5;
 }
 
 .login-form .btn {
@@ -111,14 +166,21 @@ body {
 }
 
 .roundedCorner
-{
-  
-  
+{  
   box-shadow: 10px -10px 5px  rgba(0,0,0,0.6);
   -moz-box-shadow: 10px -10px 5px  rgba(0,0,0,0.6);
   -webkit-box-shadow: 10px -10px 10px  rgba(0,0,0,0.4);
   -o-box-shadow: 10px -10px 5px  rgba(0,0,0,0.6);
   border-radius:25px;
+}
+#createAnAccount{
+  margin: 2rem auto;
+}
+#createAnAccount span{
+  display: block;
+  margin: auto;
+  text-align: center;
+  text-decoration: underline;
 }
 
 

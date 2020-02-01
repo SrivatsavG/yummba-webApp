@@ -34,6 +34,6 @@ router.get('/orders/:orderId', isAuth, shopController.getInvoice);
 
 router.post('/submitAddress', isAuth, shopController.postSubmitAddress);
 
-router.get('/blogs',isAuth,shopController.getBlogs);
+router.get('/blogs',shopController.getBlogs);
 
 module.exports = router;

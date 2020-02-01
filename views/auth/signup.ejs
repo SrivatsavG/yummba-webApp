@@ -11,9 +11,14 @@
         <div class="user-message user-message--error"> <%= errorMessage %> </div>
         <% } %>
         <div id="signup-container" class="row container d-flex justify-content-between">
-            <div id="signup-text" class="col col-12 col-sm-12 col-md-6">
-                Come join the Yummba! community. Let's set up your free account in a few seconds.
-            </div>
+            <div id="signup-text-container" class="container col col-12 col-sm-12 col-md-6">
+                <div id="signup-text-container__img" class="container">
+                    <img src="/images/webpage_images/profile.png">
+                </div>
+                <div id="signup-text-container__text" class="container">
+                    Come join the Yummba! community. Let's set up your free account in a few seconds.                
+                </div>                
+            </div>            
             <div class="col signup-form-container roundedCorner container">
                 <form class="login-form" action="/signup" method="POST">
                     <!-- NEW -->

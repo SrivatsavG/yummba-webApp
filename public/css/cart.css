@@ -186,13 +186,22 @@ main {
   padding:0;
 }
 .emptyCart p{
-  font-size: 3rem;
+  font-size: 1rem;
   color: white;
 }
+
+@media (min-width: 420px) {
+  .emptyCart p{
+    font-size: 2rem;
+  }
+}
+
 .emptyCart img{
-  
   margin: 0;
   padding:0;
+  width:80%;
+  max-width: 500px;
+  height:auto;
 }
 
 -webkit-inner-spin-button, -webkit-outer-spin-button {

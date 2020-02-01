@@ -9,14 +9,14 @@
 
     <main>
         <% if (blogs.length > 0) { %>
+            <% var length = blogs.length %>
         <div class="grid">
-            <% for (let blog of blogs) { %>
-
-
+            <% for (let blog of blogs.reverse()) { %>
+            
             <article class="card blog-item">
                 <div class="blog-item-container container">
                     <a href="<%= blog.blogUrl %>">
-                        <div class="row d-flex justify-content-around">
+                        <!-- <div class="row d-flex justify-content-around">
                             <div class="flex-column">
                                 <header class="card__header">
                                     <h1 class="blog__title">
@@ -24,7 +24,7 @@
                                     </h1>
                                 </header>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row d-flex justify-content-around">
                             <div class="col col-md-4">
                                 <div class="card__image">
@@ -34,28 +34,32 @@
                             <div class="col flex-fill col-sm-12 col-md-8">
                                 <div class="card__content">
                                     <p class="blog__description">
-                                        <%= blog.description %>
+                                        <%= blog.title %>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <div class="row d-flex justify-content-around">
-                        <div class="flex-column">
-                            <% if (isAuthenticated) { %>
-                            <% if (user._id.toString() == admin ) { %>
-                            <div>
-                                <input type="hidden" value="<%= blog._id %>" name="blogId">
-                                <input type="hidden" name='_csrf' value="<%= csrfToken %>">
-                                <button class="btn danger" type="button" onclick="deleteBlog(this)"><i
-                                        class="fas fa-trash-alt"></i></button>
-                                <% } %>
+
+                    <% if (isAuthenticated) { %>
+                        <% if (user._id.toString() == admin ) { %>
+                        <div class="row d-flex justify-content-around">
+                            <div class="flex-column">
+
+                                <div>
+                                    <input type="hidden" value="<%= blog._id %>" name="blogId">
+                                    <input type="hidden" name='_csrf' value="<%= csrfToken %>">
+                                    <button class="btn danger" type="button" onclick="deleteBlog(this)"><i
+                                            class="fas fa-trash-alt"></i></button>
+
+                                </div>
+
+
                             </div>
-
-                            <% } %>
-
                         </div>
-                    </div>
+                        <% } %>
+                    <% } %>
+
                 </div>
             </article>
 

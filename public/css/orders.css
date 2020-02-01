@@ -4,6 +4,41 @@ body {
   font-family: 'Roboto Slab', serif;
 }
 
+#ordersContainer {
+  margin:auto;
+  width: 100%;
+}
+
+#ordersContainer .row{
+  width: 100%;
+  margin:auto;
+}
+
+#noOrder {
+  text-align: center;
+  margin: auto;
+  margin-top: 3rem;
+  color:white;
+  font-size: 3rem;
+}
+#imageCol{
+  display: none;
+}
+
+@media (min-width:768px){
+  #imageCol{
+    display: block;
+  }
+}
+
+#ordersImage {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
 .ordersList {
   list-style: none;
   margin: 0;
@@ -14,12 +49,12 @@ body {
   border: none;
   margin-top: 3rem;
   text-decoration: none;
+  text-align: left;
 }
 
 .orders__item {
   margin: 0;
   background-color: white;
-  font-size: 1rem;
   border-radius: 25px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 1rem;
@@ -27,9 +62,10 @@ body {
 }
 
 .orders__item p{
-  font-size:1.5rem;
+  font-size:1rem;
   word-wrap: break-word;
 }
+
 
 .orders__products {
   list-style: none;
@@ -40,4 +76,15 @@ body {
 .orders__products-item {
   color: #00695c;
   padding:0.2rem;
+  font-size: 0.7rem;
+}
+
+@media (min-width:){
+  .orders__item p{
+    font-size:1.5rem;
+  }
+
+  .orders__products {
+    font-size:1rem;
+  }
 }

@@ -242,7 +242,7 @@ exports.postReset = (req, res, next) => {
           subject: 'Password reset',
           html: `
             <p>You requested a password reset</p>
-            <p>Click this <a href="http://localhost:4000/reset/${token}">link</a> to set a new password.</p>
+            <p>Click this <a href="https://www.yummba.in/reset/${token}">link</a> to set a new password.</p>
           `
         });
       })
