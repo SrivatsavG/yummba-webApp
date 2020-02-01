@@ -12843,3 +12843,4 @@
 ::1 - - [31/Jan/2020:10:09:20 +0000] "GET /css/orders.css HTTP/1.1" 304 - "http://localhost:4000/orders" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/79.0.3945.79 Chrome/79.0.3945.79 Safari/537.36"
 ::1 - - [31/Jan/2020:10:09:20 +0000] "GET /js/main.js HTTP/1.1" 304 - "http://localhost:4000/orders" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/79.0.3945.79 Chrome/79.0.3945.79 Safari/537.36"
 ::1 - - [31/Jan/2020:10:09:20 +0000] "GET /images/webpage_images/yummba_logo.png HTTP/1.1" 304 - "http://localhost:4000/orders" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/79.0.3945.79 Chrome/79.0.3945.79 Safari/537.36"
+::1 - - [01/Feb/2020:06:05:06 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/79.0.3945.79 Chrome/79.0.3945.79 Safari/537.36"

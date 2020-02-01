@@ -3,7 +3,7 @@
         "MONGO_USER": "srivatsav",
         "MONGO_PASSWORD": "0904",
         "MONGO_DB": "yummba_max",
-        "STRIPE_KEY": "sk_test_EL1UmjPYbUwn8hLlEiJpcUYl009oTPWCn0",
+        "STRIPE_KEY": "sk_test_P1YXDAsgkbwKFDNUuGMAtUHu008lnuVe1R",
         "ADMIN" : "5e32c061f8da2c10fd647428",
 
         "AWS_ACCESS_KEY_ID":"AKIAIXN4DZUZOEWPFDLQ",
@@ -12,13 +12,6 @@
         "AWS_REGION":"us-east-2",
 
 
-        "MID":"WopolV35383146897967",
-        "PAYTM_MERCHANT_KEY":"LKVKUJIKc&Zg#ZAc",
-        "WEBSITE":"WEBSTAGING",
-        "CHANNEL_ID":"WEB",
-        "INDUSTRY_TYPE_ID":"Retail",
-        "PAYTM_FINAL_URL":"https://securegw-stage.paytm.in/theia/processTransaction",
-        "CALLBACK_URL":"http://localhost:4000/paywithpaytmresponse",
         "PORT":"4000"
 
     }
