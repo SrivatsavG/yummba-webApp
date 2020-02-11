@@ -29,7 +29,7 @@
                     <label for="imageUrl">Image URL</label>
                     <input type="text" name="imageUrl" id="imageUrl" value="<% if (editing) { %><%= product.imageUrl %><% } %>">
                 </div> -->
-                <!-- <div class="edit-product-form-control">
+            <!-- <div class="edit-product-form-control">
                     <label for="price">Price</label>
                     <input type="number" name="price" id="price" step="0.01"
                         value="<% if (editing) { %><%= product.price %><% } %>">
@@ -45,20 +45,27 @@
                 <input type="hidden" name='_csrf' value="<%= csrfToken %>">
                 <button class="edit-product-btn" type="submit"><% if (editing) { %>Update Product<% } else { %>Add
                     Product<% } %></button>
-            </form> --> 
+            </form> -->
 
             <!--DUPLICATE-->
 
-            <form class="edit-product-product-form" action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>"
-                method="POST" enctype='multipart/form-data'>
+            <form class="edit-product-product-form"
+                action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST"
+                enctype='multipart/form-data'>
                 <div class="edit-product-form-control">
                     <label for="title">Title</label>
                     <input type="text" name="title" id="title" value="<% if (editing) { %><%= product.title %><% } %>">
                 </div>
                 <div class="edit-product-form-control">
-                    <label for="imageUrl">Image URL</label>
-                    <input type="text" name="imageUrl" id="imageUrl"
-                        value="<% if (editing) { %><%= product.imageUrl %><% } %>">
+                    <label for="image">Image</label>
+                    <select name="image" id="image" size="6" value="<% if (editing) { %><%= product.image %><% } %>">
+                        <option value="blueberry_white">Blueberry</option>
+                        <option value="cinnamon_white">Cinnamon</option>
+                        <option value="cocoa_white">Cocoa</option>
+                        <option value="coffee_white">Coffee</option>
+                        <option value="oatmeal_white">Oatmeal</option>
+                        <option value="peanut_white">Peanut Butter</option>
+                    </select>
                 </div>
                 <!-- OLD
                     <div class="form-control">
@@ -75,6 +82,100 @@
                     <textarea name="description" id="description"
                         rows="5"><% if (editing) { %><%= product.description %><% } %></textarea>
                 </div>
+                <div class="edit-product-form-control">
+
+                    <input type="checkbox" name="ingredients0" value="Almonds">Almonds<br>
+                    <input type="checkbox" name="ingredients1" value="Blueberry">Blueberry<br>
+                    <input type="checkbox" name="ingredients2" value="Chia">Chia<br>
+                    <input type="checkbox" name="ingredients3" value="Cinnamon">Cinnamon<br>
+                    <input type="checkbox" name="ingredients4" value="Cocoa">Cocoa<br>
+                    <input type="checkbox" name="ingredients5" value="Coffee">Coffee<br>
+                    <input type="checkbox" name="ingredients6" value="Dates"> Dates<br>
+                    <input type="checkbox" name="ingredients7" value="Flax"> Flax<br>
+                    <input type="checkbox" name="ingredients8" value="Nachni"> Nachni<br>
+                    <input type="checkbox" name="ingredients9" value="Oats">Oats<br>
+                    <input type="checkbox" name="ingredients10" value="Pumpkin">Pumpkin<br>
+                    <input type="checkbox" name="ingredients11" value="Raisins">Raisins<br>
+                    <input type="checkbox" name="ingredients12" value="Peanuts">Peanuts<br>
+
+                </div>
+                <!-- <div class="edit-product-form-control"> -->
+                <!-- <label for="ingredients">Choose 6 ingredients using control</label>
+                    <select name="ingredients" size="13" multiple>
+                        <option value="Almonds">Almonds</option>
+                        <option value="Blueberry">Blueberry</option>
+                        <option value="Chia">Chia Seeds</option>
+                        <option value="Cinnamon">Cinnamon</option>
+                        <option value="Cocoa">Cocoa Powder</option>
+                        <option value="Coffee">Coffee Powder</option>
+                        <option value="Dates">Dates</option>
+                        <option value="Flax">Flax Seeds</option>
+                        <option value="Nachni">Nachni</option>
+                        <option value="Oats">Oats</option>
+                        <option value="Peanuts">Peanuts</option>
+                        <option value="Pumpkin">Pumpkin Seeds</option>
+                        <option value="Raisins">Raisins</option>
+                    </select> -->
+
+                <!-- </div> -->
+                <div class="nutrition edit-product-form-control">
+                    <label for="servingSize">Serving Size</label>
+                    <input type="number" name="servingSize" id="servingSize" step="0.1"
+                        value="<% if (editing) { %><%= product.servingSize %><% } %>">
+
+                    <label for="calories">Calories</label>
+                    <input type="number" name="calories" id="calories" step="0.1"
+                        value="<% if (editing) { %><%= product.calories %><% } %>">
+
+                    <label for="totalFat">Total Fat</label>
+                    <input type="number" name="totalFat" id="totalFat" step="0.1"
+                        value="<% if (editing) { %><%= product.totalFat %><% } %>">
+
+                    <label for="saturatedFat">Saturated Fat</label>
+                    <input type="number" name="saturatedFat" id="saturatedFat" step="0.1"
+                        value="<% if (editing) { %><%= product.saturatedFat %><% } %>">
+
+                    <label for="transFat">Trans Fat</label>
+                    <input type="number" name="transFat" id="transFat" step="0.1"
+                        value="<% if (editing) { %><%= product.transFat %><% } %>">
+
+                    <label for="cholestoral">Cholesterol</label>
+                    <input type="number" name="cholestoral" id="cholestoral" step="0.1"
+                        value="<% if (editing) { %><%= product.cholestoral %><% } %>">
+
+                    <label for="sodium">Sodium</label>
+                    <input type="number" name="sodium" id="sodium" step="0.1"
+                        value="<% if (editing) { %><%= product.sodium %><% } %>">
+
+                    <label for="totalCarbohydrate">Total Carbohydrate</label>
+                    <input type="number" name="totalCarbohydrate" id="totalCarbohydrate" step="0.1"
+                        value="<% if (editing) { %><%= product.totalCarbohydrate %><% } %>">
+
+                    <label for="dietaryFiber">Dietary Fiber</label>
+                    <input type="number" name="dietaryFiber" id="dietaryFiber" step="0.1"
+                        value="<% if (editing) { %><%= product.dietaryFiber %><% } %>">
+
+                    <label for="fruitSugar">Natural Fruit Sugar</label>
+                    <input type="number" name="fruitSugar" id="fruitSugar" step="0.1"
+                        value="<% if (editing) { %><%= product.fruitSugar %><% } %>">
+
+                    <label for="protein">Protein</label>
+                    <input type="number" name="protein" id="protein" step="0.1"
+                        value="<% if (editing) { %><%= product.protein %><% } %>">
+
+                    <label for="calcium">Calcium</label>
+                    <input type="number" name="calcium" id="calcium" step="0.1"
+                        value="<% if (editing) { %><%= product.calcium %><% } %>">
+
+                    <label for="iron">Iron</label>
+                    <input type="number" name="iron" id="iron" step="0.1"
+                        value="<% if (editing) { %><%= product.iron %><% } %>">
+
+                    <label for="potassium">Potassium</label>
+                    <input type="number" name="potassium" id="potassium" step="0.1"
+                        value="<% if (editing) { %><%= product.potassium %><% } %>">
+                </div>
+
                 <% if (editing) { %>
                 <input type="hidden" value="<%= product._id %>" name="productId">
                 <% } %>

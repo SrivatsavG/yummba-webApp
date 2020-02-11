@@ -9,7 +9,12 @@ body {
 .productImage img{
     border-radius: 50%;
     border:2px white solid;
-    height: 400px;
+    display: flex;
+    margin:auto;
+    max-height: 400px;
+    max-width: 80%;
+
+    
 }
 
 #description {
@@ -19,4 +24,122 @@ body {
 
 #price {
     text-align: left;
+}
+
+.ingredients{
+    margin: 2rem auto;
+}
+
+.ingredients img{
+    margin-top:5rem;
+    border-radius: 50%;
+    height: 100px;
+    width:auto;
+}
+
+.nutrition_wrapper {
+    font-family: 'Arial Narrow', 'ArialNarrow', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    padding-bottom: 96px;
+    margin-top:5rem;
+}
+
+.nutrition_wrapper table {
+    margin: 0 auto;
+    line-height: 18px;
+    text-align: left;
+    border: 0;
+    border-collapse: collapse;
+}
+
+
+.nutrition_wrapper table td.n_left {
+    width: 155px;
+    line-height: 19px;
+    font-size: 15px;
+}
+
+.nutrition_wrapper table td.n_center {
+    width: 290px;
+    padding: 1px 4px;
+    height: 153px;
+}
+
+
+.nutrition_wrapper table table td {
+    border-bottom: 1px solid 
+    #231f20;
+    padding: 3px 1px 2px;
+}
+
+.nutrition_wrapper table td {
+    vertical-align: top;
+}
+
+
+.nutrition_wrapper .small_space {
+    display: inline-block;
+    width: 2px;
+}
+
+.nutrition_wrapper table .align_right {
+    text-align: right;
+}
+
+.nutrition_wrapper table table td.small_indent {
+    text-indent: 8px;
+}
+
+.nutrition_wrapper table table td.last {
+    border-bottom: 0;
+    border-top: 7px solid 
+    #231f20;
+    padding: 0;
+}
+
+.nutrition_wrapper table table th.amount {
+    width: 193px;
+}
+
+.nutrition_wrapper table table th {
+    padding: 3px 1px;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    font-style: normal;
+    text-align: left;
+    border-bottom: 7px solid 
+    #231f20;
+    font-weight: bold;
+    font-family: Impact, 'Franklin Gothic Demi', Arial, sans-serif;
+}
+
+.nutrition_wrapper .small_space {
+    display: inline-block;
+    width: 2px;
+}
+
+.nutrition_wrapper table td.n_right {
+    width: 112px;
+    padding-top: 16px;
+}
+
+.nutrition_wrapper .side_note_star {
+    float: left;
+    font-size: 13px;
+    padding: 5px 0 0 3px;
+    letter-spacing: 0.02em;
+}
+
+.m_hidden{
+    display: none;
+}
+
+@media (min-width:800px) {
+    .d_hidden {
+        display:none;
+    }
+    .m_hidden{
+        display: flex;
+    }
 }

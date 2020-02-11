@@ -3,6 +3,8 @@ const Product = require('../models/product');
 const Blog = require('../models/blog');
 const fileHelper = require('../util/file');
 
+var mongoose = require('mongoose');
+
 const ObjectId = mongodb.ObjectID;
 
 
@@ -91,22 +93,88 @@ exports.getAddProduct = (req, res, next) => {
 
 exports.postAddProduct = (req, res, next) => {
   const title = req.body.title;
-  const imageUrl = req.body.imageUrl;
+  const image = req.body.image;
   const price = req.body.price;
   const description = req.body.description;
 
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 
-  console.log(title);
-  console.log(imageUrl);
+  //INGREDIENTS
+  var ingredients = [];
+
+  const ingredients0 = req.body.ingredients0;
+  const ingredients1 = req.body.ingredients1;
+  const ingredients2 = req.body.ingredients2;
+  const ingredients3 = req.body.ingredients3;
+  const ingredients4 = req.body.ingredients4;
+  const ingredients5 = req.body.ingredients5;
+  const ingredients6 = req.body.ingredients6;
+  const ingredients7 = req.body.ingredients7;
+  const ingredients8 = req.body.ingredients8;
+  const ingredients9 = req.body.ingredients9;
+  const ingredients10 = req.body.ingredients10;
+  const ingredients11 = req.body.ingredients11;
+  const ingredients12 = req.body.ingredients12;
+
+  if (req.body.ingredients0) ingredients.push(req.body.ingredients0);
+  if (req.body.ingredients1) ingredients.push(req.body.ingredients1);
+  if (req.body.ingredients2) ingredients.push(req.body.ingredients2);
+  if (req.body.ingredients3) ingredients.push(req.body.ingredients3);
+  if (req.body.ingredients4) ingredients.push(req.body.ingredients4);
+  if (req.body.ingredients5) ingredients.push(req.body.ingredients5);
+  if (req.body.ingredients6) ingredients.push(req.body.ingredients6);
+  if (req.body.ingredients7) ingredients.push(req.body.ingredients7);
+  if (req.body.ingredients8) ingredients.push(req.body.ingredients8);
+  if (req.body.ingredients9) ingredients.push(req.body.ingredients9);
+  if (req.body.ingredients10) ingredients.push(req.body.ingredients10);
+  if (req.body.ingredients11) ingredients.push(req.body.ingredients11);
+  if (req.body.ingredients12) ingredients.push(req.body.ingredients12);
+
+
+
+  //NUTRITION
+  const servingSize = req.body.servingSize;
+  const calories =req.body.calories;
+  const totalFat = req.body.totalFat;
+  const saturatedFat = req.body.saturatedFat;
+  const transFat = req.body.transFat;
+  const cholestoral = req.body.cholestoral;
+  const sodium = req.body.sodium;
+  const totalCarbohydrate = req.body.totalCarbohydrate;
+  const dietaryFiber = req.body.dietaryFiber;
+  const fruitSugar = req.body.fruitSugar;
+  const protein = req.body.protein;
+  const calcium = req.body.calcium;
+  const iron = req.body.iron;
+  const potassium = req.body.potassium;
+
+  console.log(title, price, image, description);
+  console.log(ingredients);
+  console.log(totalFat, saturatedFat, transFat, cholestoral, sodium, totalCarbohydrate, dietaryFiber, fruitSugar, protein, calcium, iron, potassium);
+
+
 
 
   const product = new Product({
     title: title,
     price: price,
     description: description,
-    imageUrl: imageUrl,
-    userId: req.user
+    image: image,
+    userId: req.user,
+    ingredients: ingredients,
+    servingSize:servingSize,
+    calories:calories,
+    totalFat: totalFat,
+    saturatedFat: saturatedFat,
+    transFat: transFat,
+    cholestoral: cholestoral,
+    sodium: sodium,
+    totalCarbohydrate: totalCarbohydrate,
+    dietaryFiber: dietaryFiber,
+    fruitSugar: fruitSugar,
+    protein: protein,
+    calcium: calcium,
+    iron: iron,
+    potassium: potassium
   });
   product
     .save()
@@ -217,17 +285,82 @@ exports.postEditProduct = (req, res, next) => {
   const prodId = req.body.productId;
   const updatedTitle = req.body.title;
   const updatedPrice = req.body.price;
-  const updatedImageUrl = req.body.imageUrl; // CHANGED THIS FOR FILE UPLOAD
+  const updatedImage = req.body.image; // CHANGED THIS FOR FILE UPLOAD
   const updatedDesc = req.body.description;
+
+
+  //INGREDIENTS
+  var ingredients = [];
+
+  const ingredients0 = req.body.ingredients0;
+  const ingredients1 = req.body.ingredients1;
+  const ingredients2 = req.body.ingredients2;
+  const ingredients3 = req.body.ingredients3;
+  const ingredients4 = req.body.ingredients4;
+  const ingredients5 = req.body.ingredients5;
+  const ingredients6 = req.body.ingredients6;
+  const ingredients7 = req.body.ingredients7;
+  const ingredients8 = req.body.ingredients8;
+  const ingredients9 = req.body.ingredients9;
+  const ingredients10 = req.body.ingredients10;
+  const ingredients11 = req.body.ingredients11;
+  const ingredients12 = req.body.ingredients12;
+
+  if (req.body.ingredients0) ingredients.push(req.body.ingredients0);
+  if (req.body.ingredients1) ingredients.push(req.body.ingredients1);
+  if (req.body.ingredients2) ingredients.push(req.body.ingredients2);
+  if (req.body.ingredients3) ingredients.push(req.body.ingredients3);
+  if (req.body.ingredients4) ingredients.push(req.body.ingredients4);
+  if (req.body.ingredients5) ingredients.push(req.body.ingredients5);
+  if (req.body.ingredients6) ingredients.push(req.body.ingredients6);
+  if (req.body.ingredients7) ingredients.push(req.body.ingredients7);
+  if (req.body.ingredients8) ingredients.push(req.body.ingredients8);
+  if (req.body.ingredients9) ingredients.push(req.body.ingredients9);
+  if (req.body.ingredients10) ingredients.push(req.body.ingredients10);
+  if (req.body.ingredients11) ingredients.push(req.body.ingredients11);
+  if (req.body.ingredients12) ingredients.push(req.body.ingredients12);
+
+  //NUTRITION
+  const servingSize = req.body.servingSize;
+  const calories = req.body.calories;
+  const totalFat = req.body.totalFat;
+  const saturatedFat = req.body.saturatedFat;
+  const transFat = req.body.transFat;
+  const cholestoral = req.body.cholestoral;
+  const sodium = req.body.sodium;
+  const totalCarbohydrate = req.body.totalCarbohydrate;
+  const dietaryFiber = req.body.dietaryFiber;
+  const fruitSugar = req.body.fruitSugar;
+  const protein = req.body.protein;
+  const calcium = req.body.calcium;
+  const iron = req.body.iron;
+  const potassium = req.body.potassium;
 
 
   Product.findById(prodId)
     .then(foundProduct => {
-
+      foundProduct.servingSize = servingSize;
+      foundProduct.calories = calories;
       foundProduct.title = updatedTitle;
       foundProduct.description = updatedDesc;
       foundProduct.price = updatedPrice;
-      foundProduct.imageUrl = updatedImageUrl;
+      foundProduct.image = updatedImage;
+      foundProduct.ingredients = ingredients;
+      foundProduct.totalFat = totalFat;
+      foundProduct.saturatedFat = saturatedFat;
+      foundProduct.transFat = transFat;
+      foundProduct.cholestoral =cholestoral;
+      foundProduct.sodium = sodium;
+      foundProduct.totalCarbohydrate = totalCarbohydrate;
+      foundProduct.dietaryFiber = dietaryFiber;
+      foundProduct.fruitSugar = fruitSugar;
+      foundProduct.protein = protein;
+      foundProduct.calcium = calcium;
+      foundProduct.iron = iron;
+      foundProduct.potassium = potassium;
+
+
+
 
       // product will be a full mongoose object. Save will update the object on its own
       return foundProduct.save().then(result => {

@@ -6,7 +6,12 @@
 
 <body>
     <%- include('../includes/navigation.ejs') %>
-
+    <%if(message != null) {%>
+        <div id="addedToCart">
+            <%= message %>
+        </div>
+    <% } %>
+    
     <main>
         <% if (prods.length > 0) { %>
         <div class="grid">
@@ -18,7 +23,7 @@
                     </h1>
                 </header> -->
                 <div class="card__image">
-                    <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                    <img src="https://s3.us-east-2.amazonaws.com/yummba.in/productimages/<%= product.image %>.png" alt="<%= product.title %>">
                 </div>
                 <div class="card__content">
                     <p class="product__price">Rs

@@ -16,15 +16,15 @@
                     </h1>
                 </header>
                 <div class="card__image">
-                    <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                    <img src="https://s3.us-east-2.amazonaws.com/yummba.in/productimages/<%= product.image %>.png" alt="<%= product.title %>">
                 </div>
                 <div class="card__content">
                     <p class="product__price">Rs
                         <%= product.price %>
                     </p>
-                    <p class="product__description">
+                    <!-- <p class="product__description">
                         <%= product.description %>
-                    </p>
+                    </p> -->
                 </div>
                 <div class="card__actions">
                     <a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn">Edit</a>

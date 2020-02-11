@@ -11,12 +11,13 @@
         <hr>
         <div class="container">
             <div class="row d-flex justify-content-around">
-                <div class="col">
+                <div class="col-12 col-sm-12 col-md-6">
                     <div class="productImage">
-                        <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                        <img src="https://s3.us-east-2.amazonaws.com/yummba.in/productimages/<%= product.image %>.png"
+                            alt="<%= product.title %>">
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-12 col-sm-12 col-md-6">
                     <p id="description"><%= product.description %></p>
                     <p id="price">Price: Rs <%= product.price %></p>
 
@@ -26,6 +27,23 @@
                     <%- include('../includes/add-to-cart.ejs') %>
                 </div>
             </div>
+            <div class="row d-flex justify-content-around">
+                <div class="ingredients col">
+                    <div class="row d-flex justify-content-around ingredients">
+                        <h1>Ingredients</h1>
+                    </div>
+                    <div class="row d-flex justify-content-around">
+                        <% for(let ingredient of product.ingredients) { %>
+                            <div class="col">
+                                <img src="https://s3.us-east-2.amazonaws.com/yummba.in/ingredients/<%= ingredient %>.jpg" alt="<%= product.title %>">
+                                <div class="ingredients-title"><p><%=ingredient%></p></div>    
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+
         </div>
+        <%- include('../includes/nutrition.ejs')%>
     </main>
     <%- include('../includes/end.ejs') %>

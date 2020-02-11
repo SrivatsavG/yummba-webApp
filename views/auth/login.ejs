@@ -20,7 +20,8 @@
                     <div class="form-control">
                         <label for="email">E-Mail</label>
                         <input class="<%= validationErrors.find ( error => error.param === 'email') ? 'invalid' : '' %>"
-                            type="email" name="email" id="title" value="<%= oldInput.email %>" placeholder="abc@gmail.com">
+                            type="email" name="email" id="title" value="<%= oldInput.email %>"
+                            placeholder="abc@gmail.com">
                     </div>
                     <div class="form-control">
                         <label for="password">Password</label>
@@ -30,14 +31,20 @@
                     </div>
                     <input type="hidden" name='_csrf' value="<%= csrfToken %>">
                     <div class="row d-flex justify-content-between">
-                        <button class="btn"><a href="/reset">Reset</a></button>
                         <button class="btn" type="submit">Login</button>
                     </div>
                     <div class="row d-flex justify-content-between">
-                        <p id="createAnAccount"> 
-                            Don't have an account yet?
-                            <span><a  href="/signup">Create an account</a></span>
-                        </p>                        
+                        <div class="col col-sm-4">                            
+                            <p id="forgotPassword">
+                                <span><a id="reset" href="/reset">Forgot password?</a></span>
+                            </p>
+                        </div>
+                        <div class="col col-sm-8">
+                            <p id="createAnAccount">
+                                Don't have an account yet?
+                                <span><a href="/signup">Create an account</a></span>
+                            </p>
+                        </div>
                     </div>
                 </form>
             </div>

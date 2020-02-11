@@ -173,8 +173,21 @@ body {
   -o-box-shadow: 10px -10px 5px  rgba(0,0,0,0.6);
   border-radius:25px;
 }
+
+
+#forgotPassword{
+  margin: 2rem auto;
+}
+#forgotPassword span{
+  display: block;
+  margin: auto;
+  text-align: center;
+  text-decoration: underline;
+}
+
 #createAnAccount{
   margin: 2rem auto;
+  text-align: center;
 }
 #createAnAccount span{
   display: block;
@@ -183,6 +196,24 @@ body {
   text-decoration: underline;
 }
 
+
+.user-message {
+  margin: auto;
+  width: 90%;
+  max-width: 500px;
+  border: 1px solid #4771fa;
+  padding: 1rem;
+  border-radius: 3px;
+  background: #a7b3da;
+  text-align: center;
+}
+
+.user-message--error {
+  border-color: red;
+  background: rgb(187, 150, 150);
+  color: red;
+  border-radius: 25px;
+}
 
 @media (min-width: 992px) {
   .container, .container-lg, .container-md, .container-sm {

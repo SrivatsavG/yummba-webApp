@@ -285,21 +285,7 @@ form {
   color: white;
 }
 
-.user-message {
-  margin: auto;
-  width: 90%;
-  border: 1px solid #4771fa;
-  padding: 1rem;
-  border-radius: 3px;
-  background: #a7b3da;
-  text-align: center;
-}
 
-.user-message--error {
-  border-color: red;
-  background: rgb(187, 150, 150);
-  color: red;
-}
 
 .dropbtn {
   background-color: #ffc9b5;

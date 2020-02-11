@@ -1,0 +1,378 @@
+<div class="row d-flex justify-content-around">
+                <div class="col nutrition_wrapper">
+                    <div class="m_hidden">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="n_left" rowspan="2">
+                                        <h2>Nutrition Facts</h2>
+                                        <div class="serving_size">
+                                            <strong>Serving size</strong>
+                                            <div>
+                                                <strong>
+                                                    1
+                                                    (<%= product.servingSize %>)
+                                                </strong>
+                                            </div>
+                                        </div>
+                                        <div class="calories">
+                                            <div style="float: left">
+                                                <strong style="line-height: 0.7em; font-size: 150%;">
+                                                    <%= product.calories%>
+                                                    <div style="font-size: 72%">per serving</div>
+                                                </strong>
+                                            </div>
+                                            <strong
+                                                style="font-size: 260%; padding: 6px 0; display: block; text-align: right;">200</strong>
+                                        </div>
+                                    </td>
+                                    <td class="n_center">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th class="amount">Amount Per Serving</th>
+                                                    <th class="daily align_right">Grams</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <strong>Total Fat</strong>
+                                                        <div class="small_space"></div>
+                                                        
+                                                    </td>
+                                                    <td class="align_right">
+                                                        <strong><%= product.totalFat %></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="small_indent">
+                                                        Saturated Fat
+                                                        <div class="small_space"></div>
+                                                        
+                                                    </td>
+                                                    <td class="align_right">
+                                                        <strong><%= product.saturatedFat %></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="small_indent">
+                                                        Trans Fat
+                                                        <div class="small_space"></div>
+                                                        
+                                                    </td>
+                                                    <td class="align_right">
+                                                        <strong><%= product.transFat %></strong>
+                                                    </td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td>
+                                                        <strong>Cholesterol</strong>
+                                                        <div class="small_space"></div>
+                                                        
+                                                    </td>
+                                                    <td class="align_right">
+                                                        <strong><%= product.cholestoral %></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="last" colspan="4"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <strong>Sodium</strong>
+                                                        <div class="small_space"></div>
+                                                        
+                                                    </td>
+                                                    <td class="align_right">
+                                                        <strong><%= product.sodium %></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <strong>Calcium</strong>
+                                                        <div class="small_space"></div>
+                                                        
+                                                    </td>
+                                                    <td class="align_right">
+                                                        <strong><%= product.calcium %></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <strong>Iron</strong>
+                                                        <div class="small_space"></div>
+                                                        
+                                                    </td>
+                                                    <td class="align_right">
+                                                        <strong><%= product.iron %></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="last" colspan="4"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td class="n_center">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th class="amount">Amount Per Serving</th>
+                                                    <th class="daily2 align_right">Grams</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <strong>Total Carbohydrate</strong>
+                                                        <div class="small_space"></div>
+                                                        
+                                                    </td>
+                                                    <td class="align_right">
+                                                        <strong><%= product.totalCarbohydrate %></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="small_indent">
+                                                        Dietary Fiber
+                                                        <div class="small_space"></div>
+                                                        
+                                                    </td>
+                                                    <td class="align_right">
+                                                        <strong><%= product.dietaryFiber %></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="small_indent">
+                                                        Natural fruit Sugars
+                                                        <div class="small_space"></div>
+                                                        
+                                                    </td>
+                                                    <td class="align_right">
+                                                        <strong><%= product.fruitSugar %></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mid_indent">
+                                                        Includes 0g Added Sugars
+                                                        <div class="small_space"></div>
+
+                                                    </td>
+                                                    <td class="align_right">
+                                                        <strong></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <strong>Protein</strong>
+                                                        <div class="small_space"></div>
+                                                        
+                                                    </td>
+                                                    <td class="align_right">
+                                                        <strong><%= product.protein %></strong>
+                                                    </td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td>
+                                                        <strong>Potassium</strong>
+                                                        <div class="small_space"></div>
+                                                        
+                                                    </td>
+                                                    <td class="align_right">
+                                                        <strong><%= product.potassium %></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="last" colspan="4"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <!-- <td class="n_right" rowspan="2">
+                                        <div class="side_note_star">*</div>
+                                        <div class="side_note">
+                                          
+                                            
+                                        </div>
+                                    </td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class='d_hidden'>
+                        <table class='m_nutrition'>
+                            <tr>
+                                <td>
+                                    <h2>Nutrition Facts</h2>
+                                    <div class='serving_size'>
+                                        Serving Size
+                                        <div class='indent'>
+                                            1
+                                            (<%= product.servingSize %>g)
+                                        </div>
+                                    </div>
+                                    <div class='calories'>
+                                        <strong>Calories</strong>
+                                        <span><%= product.calories %></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class='amount'>Amount Per Serving</th>
+                                                <th>Grams</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <strong>Total Fat</strong>
+                                                    <div class='small_space'></div>
+                                        
+                                                </td>
+                                                <td class='align_right'>
+                                                    <strong><%= product.totalFat %></strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class='small_indent'>
+                                                    Saturated Fat
+                                                    <div class='small_space'></div>
+                                                    
+                                                </td>
+                                                <td class='align_right'>
+                                                    <strong><%= product.saturatedFat %></strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class='small_indent'>
+                                                    Trans Fat
+                                                    <div class='small_space'></div>
+                                                    
+                                                </td>
+                                                <td class='align_right'>
+                                                    <strong><%= product.transFat %></strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Cholesterol</strong>
+                                                    <div class='small_space'></div>
+                                                    
+                                                </td>
+                                                <td class='align_right'>
+                                                    <strong><%= product.cholestoral %></strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Sodium</strong>
+                                                    <div class='small_space'></div>
+                                                    
+                                                </td>
+                                                <td class='align_right'>
+                                                    <strong><%= product.sodium %></strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Total Carbohydrate</strong>
+                                                    <div class='small_space'></div>
+                                                    
+                                                </td>
+                                                <td class='align_right'>
+                                                    <strong><%= product.totalCarbohydrate %></strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class='small_indent'>
+                                                    Dietary Fiber
+                                                    <div class='small_space'></div>
+                                                    
+                                                </td>
+                                                <td class='align_right'>
+                                                    <strong><%= product.dietaryFiber %></strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class='small_indent'>
+                                                    Natural Fruit sugar
+                                                    <div class='small_space'></div>
+                                                    
+                                                </td>
+                                                <td class='align_right'>
+                                                    <strong><%= product.fruitSugar %></strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class='mid_indent'>
+                                                    Includes 0g Added Sugars
+                                                    <div class='small_space'></div>
+
+                                                </td>
+                                                <td class='align_right'>
+                                                    <strong></strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Protein</strong>
+                                                    <div class='small_space'></div>
+                                                    
+                                                </td>
+                                                <td class='align_right'>
+                                                    <strong><%= product.protein %></strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Calcium</strong>
+                                                    <div class='small_space'></div>
+                                                    
+                                                </td>
+                                                <td class='align_right'>
+                                                    <strong><%= product.calcium %></strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Iron</strong>
+                                                    <div class='small_space'></div>
+                                                    
+                                                </td>
+                                                <td class='align_right'>
+                                                    <strong><%= product.iron %></strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Potassium</strong>
+                                                    <div class='small_space'></div>
+                                                    
+                                                </td>
+                                                <td class='align_right'>
+                                                    <strong><%= product.potassium %></strong>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width='100%'>
+                                    <div class='side_note'>
+                                        <div style='float: left; padding: 0 4px 0 0'>*</div>
+                                       
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>

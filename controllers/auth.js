@@ -241,8 +241,10 @@ exports.postReset = (req, res, next) => {
           from: 'Yummba!@yummba.com',
           subject: 'Password reset',
           html: `
-            <p>You requested a password reset</p>
+            <p>We heard that you lost your Yummba password. Sorry about that!</p>
+            <p> But don’t worry! You can use the following link to reset your password.</p>
             <p>Click this <a href="https://www.yummba.in/reset/${token}">link</a> to set a new password.</p>
+            <p>The link will expire in an hour. If you are unable to reset your password within this time,don't worry, you can request another password reset from Yummba by clicking <a href="https://www.yummba.in/reset">here</a>.</p>
           `
         });
       })

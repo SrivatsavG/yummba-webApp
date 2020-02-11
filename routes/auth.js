@@ -44,7 +44,7 @@ router.post(
                 .then(userDoc => {
                     if (userDoc) {
                         return Promise.reject(
-                            'Email already exists, please use another email or try logging in'
+                            'Email already exists, please use another email-id or try logging in.'
                         );
                     }
                 });

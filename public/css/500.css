@@ -5,6 +5,14 @@ body {
     background-color: #9ee8de;
     font-size: 1.5rem;
     background-image: url("/images/webpage_images/500.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#text500 {
+    text-align: center;
+    margin: auto;
+    margin-top: 3rem;
 }
 
 main {

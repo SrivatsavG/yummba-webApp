@@ -19,6 +19,15 @@ const Product = require('../models/product');
 const Order = require("../models/order");
 
 exports.getProducts = (req, res, next) => {
+  
+  let message = req.flash('addedToCart');
+  
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
+
   Product.find() // mongoose method:- gives all products
     .then(products => {
       res.render('shop/product-list', {
@@ -26,7 +35,8 @@ exports.getProducts = (req, res, next) => {
         pageTitle: 'All Products',
         path: '/products',
         user: req.user || null,
-        admin: process.env.ADMIN
+        admin: process.env.ADMIN,
+        message: message
       });
     })
     .catch(err => {
@@ -115,13 +125,17 @@ exports.postCart = (req, res, next) => {
   const prodId = req.body.productId;
   const quantity = req.body.quantity;
 
+  let message=''
+
   Product.findById(prodId)
     .then(product => {
+      message = `${quantity} ${product.title} added to Cart`
       return req.user.addToCart(product, quantity);
 
     })
     .then(result => {
       console.log(result);
+      req.flash("addedToCart",message);
       res.redirect("/products");
     });
 };
@@ -288,6 +302,14 @@ exports.getCheckoutSuccess = (req, res, next) => {
         from:'yummba@yummba.com',
         subject:'Yummba order placed',
         html:`<h1>Thank you for shopping with us.</h1><p>Your products will be delivered to ${req.user.address}</p><p>For support, please contact</p><p>chandni@yummba.in</p><p>9324621020</p>`
+        }); 
+    })
+    .then(() => {
+      transporter.sendMail({
+        to:chandni,
+        from:'chandni@yummba.in',
+        subject:'An order was placed',
+        html:`<h1>An order was placed by ${req.user.email}</h1>.<p>Customer mobile : ${req.user.mobile}</p><p>User id: ${req.user}</p><p> To be delivered at ${req.user.address}</p>`
         }); 
     })
     .then(result => {

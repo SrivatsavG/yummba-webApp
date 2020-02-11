@@ -4,6 +4,19 @@ body {
     font-size: large;
 }
 
+#addedToCart{
+    background-color: #97e362;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1rem;
+    text-align: center;
+    margin:auto;
+    margin-top: 1rem;
+    max-width: 400px;
+    height: 2rem;
+    border-radius: 25px;
+    padding:auto;
+}
+
 .product-form {
     width: 20rem;
     max-width: 90%;
@@ -64,4 +77,13 @@ body {
 
 .edit-product-form-control textarea {
     width:60%;
+}
+
+.nutrition input{
+    display: block;
+}
+
+form button {
+    align-self: center;
+    margin: 5rem;
 }
