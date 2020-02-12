@@ -4,7 +4,8 @@
     <nav class="main-header__nav">
         <ul class="main-header__item-list">
             <li class="">
-                <a class="brandName <%= path === '/' ? 'active' : '' %>" href="/"><img src="/images/webpage_images/yummba_logo.png" alt="Yummba!"></a>
+                <a class="brandName <%= path === '/' ? 'active' : '' %>" href="/"><img
+                        src="/images/webpage_images/yummba_logo.png" alt="Yummba"></a>
             </li>
             <li class="main-header__item">
                 <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">PRODUCTS</a>
@@ -12,22 +13,23 @@
             <li class="main-header__item">
                 <a class="<%= path === '/blogs' ? 'active' : '' %>" href="/blogs">BLOG</a>
             </li>
-            <% if (isAuthenticated) {%>              
-            
-                <% if( user._id.toString() == admin) { %>           
+            <% if (isAuthenticated) {%>
+
+            <% if( user._id.toString() == admin) { %>
 
 
-                <li class="main-header__item">
-                    <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">ADD PRODUCT</a>
-                </li>
-                <li class="main-header__item">
-                    <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">ADMIN-PRODUCTS</a>
-                </li>
-                <li class="main-header__item">
-                    <a class="<%= path === '/admin/add-blog' ? 'active' : '' %>" href="/admin/add-blog">ADD-BLOG</a>
-                </li>
-                <% } %>
-            
+            <li class="main-header__item">
+                <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">ADD
+                    PRODUCT</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">ADMIN-PRODUCTS</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/admin/add-blog' ? 'active' : '' %>" href="/admin/add-blog">ADD-BLOG</a>
+            </li>
+            <% } %>
+
             <% } %>
         </ul>
 
@@ -40,26 +42,30 @@
                 <a class="<%= path === '/orders' ? 'active' : '' %>" href="/signup">SIGNUP</a>
             </li>
             <% } else { %>
-                    <% var name =  user.username %>
-                    <div class="dropdown ">
-                        <button class="dropbtn username"><i class="fas fa-user"></i> <%= name %></button>
-                        <div class="dropdown-content">
-                            <a href="/cart">CART</a>
-                            <a href="/orders">ORDERS</a>
-                            <li>                
-                                <form action="/logout" method="post">
-                                    <input type="hidden" name='_csrf' value="<%= csrfToken %>">
-                                    <button type="submit">LOGOUT</button>
-                                </form>
-                             </li>
-                        </div>
-                    </div>            
-                
+            <% var name =  user.username %>
+            <div class="dropdown ">
+                <button class="dropbtn username"><i class="fas fa-user"></i> <%= name %></button>
+                <div class="container dropdown-content">
+                    <div class="dropdown-row row d-flex justify-content-center">
+                        <a href="/cart">CART</a>
+                    </div>
+                    <div class="dropdown-row row d-flex justify-content-center">
+                        <a href="/orders">ORDERS</a>
+                    </div>
+                    <div class="dropdown-row row d-flex justify-content-center">
+                        <form action="/logout" method="post">
+                            <input type="hidden" name='_csrf' value="<%= csrfToken %>">
+                            <button type="submit">LOGOUT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <% } %>
         </ul>
     </nav>
 </header>
-
+<!-- 
 <nav class="mobile-nav">
     <ul class="mobile-nav__item-list">
         <li class="mobile-nav__item">
@@ -85,7 +91,7 @@
             <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">SIGNUP</a>
         </li>
 
-        
+
         <% } else { %>
         <li class="mobile-nav__item">
             <form action="/logout" method="post">
@@ -95,8 +101,46 @@
         </li>
         <% } %>
     </ul>
+</nav> -->
 
 
+<nav class="container mobile-nav">
+    <div class="mobile-nav__item row d-flex justify-content-start">
+        <a class="<%= path === '/' ? 'active' : '' %>" href="/">HOME</a>
+    </div>
+    <div class="mobile-nav__item row d-flex justify-content-start">
+        <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">PRODUCTS</a>
 
+    </div>
+    <div class="mobile-nav__item row d-flex justify-content-start">
+        <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">CART </a>
+
+    </div>
+    <div class="mobile-nav__item row d-flex justify-content-start">
+        <a class="<%= path === '/orders' ? 'active' : '' %>" href="/orders">ORDERS</a>
+
+    </div>
+    <% if (!isAuthenticated) {%>
+    <div class="mobile-nav__item row d-flex justify-content-start">
+        <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">LOGIN</a>
+
+    </div>
+    <div class="mobile-nav__item row d-flex justify-content-start">
+        <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">SIGNUP</a>
+
+    </div>
+
+
+    <% } else { %>
+    <div class="mobile-nav__item row d-flex justify-content-start">
+        <form action="/logout" method="post">
+            <input type="hidden" name='_csrf' value="<%= csrfToken %>">
+            <button type="submit">LOGOUT</button>
+        </form>
+    </div>
+    <% } %>
+    <div class="mobile-nav__item-list row d-flex justify-content-start">
+
+    </div>
 
 </nav>

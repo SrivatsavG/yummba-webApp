@@ -174,10 +174,10 @@ exports.postSignup = (req, res, next) => {
       res.redirect('/login');
       return transporter.sendMail({
         to: email,
-        from: 'Yummba!@yummba.com',
-        subject: 'Yummba! account created',
+        from: 'Yummba@yummba.com',
+        subject: 'Yummba account created',
         html: 
-        '<h1>Yummba! family welcomes you.</h1><p> We are glad that you have taken another step toward a healthier lifestyle. You can now login and view our products. </p><p>Happy munching!</p>'
+        '<h1>Yummba family welcomes you.</h1><p> We are glad that you have taken another step toward a healthier lifestyle. You can now login and view our products. </p><p>Happy munching!</p>'
       });
     })
     .catch(err => {
@@ -238,7 +238,7 @@ exports.postReset = (req, res, next) => {
         res.redirect('/');
         transporter.sendMail({
           to: req.body.email,
-          from: 'Yummba!@yummba.com',
+          from: 'Yummba@yummba.com',
           subject: 'Password reset',
           html: `
             <p>We heard that you lost your Yummba password. Sorry about that!</p>

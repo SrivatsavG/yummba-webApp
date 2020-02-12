@@ -29,7 +29,7 @@ body {
     border: none;
     border-radius: 25px;
     margin:auto;
-    font-family: 'Bangers', cursive;
+    font-family: 'Handlee', cursive;
     letter-spacing: 1px;
     font-size: 1rem;
     font-weight: 100;
@@ -58,7 +58,7 @@ body {
   .form-control label {
     display: block;
     color: white;
-    font-family: 'Bangers', cursive;
+    font-family: 'Handlee', cursive;
     letter-spacing: 1px;
     font-size: 1.7rem;
     
@@ -69,10 +69,10 @@ body {
     border-radius: 50px;
     padding: 3px;
     padding-left: 12px;
-    font-family: 'Bangers', cursive;
+    font-family: 'Handlee', cursive;
     letter-spacing: 1px;
     font-size: 1rem;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Handlee', serif;
   
   }
 

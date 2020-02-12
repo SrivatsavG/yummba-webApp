@@ -6,7 +6,7 @@ body {
 
 #addedToCart{
     background-color: #97e362;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Handlee', serif;
     font-size: 1rem;
     text-align: center;
     margin:auto;
@@ -50,13 +50,13 @@ body {
     margin-bottom: 0.5rem;
     letter-spacing: 1px;
     font-size: 1rem;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Handlee', serif;
 }
 
 .product__description {
     text-align: center;
     font-size: 1rem;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Handlee', serif;
 }
 
 #quantity:focus {

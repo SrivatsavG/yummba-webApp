@@ -55,7 +55,7 @@ exports.getIndex = (req, res, next) => {
       res.render('shop/index',
         {
           prods: products,
-          pageTitle: 'Yummba!',
+          pageTitle: 'Yummba',
           path: '/',
           user: req.user || null,
           admin: process.env.ADMIN
@@ -436,7 +436,7 @@ exports.getInvoice = (req, res, next) => {
       pdfDoc.pipe(fs.createWriteStream(invoicePath));
       pdfDoc.pipe(res);
 
-      pdfDoc.fontSize(26).text('Yummba!', {
+      pdfDoc.fontSize(26).text('Yummba', {
         underline: true,
         align: 'center'
       });
