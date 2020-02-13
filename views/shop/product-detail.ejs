@@ -7,7 +7,7 @@
 <body>
     <%- include('../includes/navigation.ejs') %>
     <main class="centered">
-        <h1 id="productTitle"><%= product.title %></h1>
+        <h1 class="titleFont" id="productTitle"><%= product.title %></h1>
         <hr>
         <div class="container">
             <div class="row d-flex justify-content-around">
@@ -18,8 +18,10 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-6">
-                    <p id="description"><%= product.description %></p>
-                    <p id="price">Price: Rs <%= product.price %></p>
+                    <p class="paraFont" id="description "><%= product.description %></p>
+                    <hr>
+                    <p class="paraFont" id="price">Price: Rs <%= product.price %></p>
+                    <hr>
 
                     <!-- <% if (isAuthenticated) { %>
                         <%- include('../includes/add-to-cart.ejs') %>
@@ -30,7 +32,7 @@
             <div class="row d-flex justify-content-around">
                 <div class="ingredients col">
                     <div class="row d-flex justify-content-around ingredients">
-                        <h1>Ingredients</h1>
+                        <h1 class="headerFont">Ingredients</h1>
                     </div>
                     <div class="row d-flex justify-content-around">
                         <% for(let ingredient of product.ingredients) { %>

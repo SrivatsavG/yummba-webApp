@@ -12,9 +12,7 @@ body {
     display: flex;
     margin:auto;
     max-height: 400px;
-    max-width: 80%;
-
-    
+    max-width: 80%;    
 }
 
 #description {
@@ -24,6 +22,20 @@ body {
 
 #price {
     text-align: left;
+}
+
+.titleFont {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.headerFont{
+    font-size: 2rem;
+    font-weight: bold;
+
+}
+.paraFont{
+    font-size: 1.3rem;
 }
 
 .ingredients{
