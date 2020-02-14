@@ -42,7 +42,7 @@ form {
 .main-header {
   width: 100%;
   height: 5rem;
-  background-color: #ffc9b5;
+  background-color: transparent;
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
@@ -94,8 +94,8 @@ form {
   margin: auto;
   padding: 0;
   margin-right: 15px;
-  width: 10rem;
-  height: 10rem;
+  width: auto;
+  height: 3rem;
   background: transparent;
   border: none;
   text-decoration: none;
@@ -107,7 +107,6 @@ form {
   font-size: 1.5rem;
   outline:none;
   outline-style: none;
-  
 }
 
 .brandName :focus, .brandName :active{
@@ -322,7 +321,7 @@ form {
   display: none;
   position: absolute;
   right: 0;
-  background-color: #ffc9b5;
+  background-color: transparent;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -353,7 +352,7 @@ form {
   text-decoration: none;
   display: block;
   color: white;
-  background-color: #ffc9b5;
+  background-color: transparent;
   border: none;
   min-width: 160px;
   font-weight: bold;

@@ -87,3 +87,7 @@ form button {
     align-self: center;
     margin: 5rem;
 }
+
+article a{
+    outline:none;
+}
