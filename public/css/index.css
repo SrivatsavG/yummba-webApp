@@ -54,11 +54,17 @@ main {
     margin: 1rem;
     text-align: justify;
 }
-
+.carouselAndContact{
+    /* background-color: #9ee8de; */
+    padding-top:3rem;
+    background-color: black;
+    background-image: url("/images/webpage_images/bg4.png");
+}
 .contact {
     margin: 0;
     padding: 0;
-    background-color: #9ee8de;
+    
+    
 }
 
 .contact .row {

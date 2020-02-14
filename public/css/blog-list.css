@@ -1,6 +1,9 @@
 body {
     background-color: #9ee8de;
+    background-image: url("/images/webpage_images/bg4.png");
+
     font-family: 'Handlee', serif;
+
 }
 
 .grid {

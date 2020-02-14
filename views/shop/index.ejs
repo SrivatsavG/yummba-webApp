@@ -8,37 +8,36 @@
 
 <body>
 
-    
-        <!--NAVIGATION WAS HERE-->
 
-        <main>
-            <div class="indexPageContainer">
-                <div class="about container">
-                    <div class = "row d-flex">
-                        <%- include('../includes/navigation.ejs') %>
-                    </div>
-                    
-                    <div class="about-row row d-flex">
-                        <div class="col">
-                            <p class="about-banner">Yummy.Healthy.Honest</p>
-                            <p class="about-text">Yummba was built with a purpose to provide individuals with an
-                                alternative
-                                to unhealthy & highly-processed snacks and help them take simple steps toward a healthy
-                                lifestyle. Our passion lies in crafting nutritious snacks from whole-food ingredients
-                                that
-                                cater to everyone's taste buds without compromising on health. We hope you enjoy our
-                                products as much as we did making them.
-                            </p>
-                        </div>
-                    </div>
+    <!--NAVIGATION WAS HERE-->
 
-
-                    
+    <main>
+        <div class="indexPageContainer">
+            <div class="about container">
+                <div class="row d-flex">
+                    <%- include('../includes/navigation.ejs') %>
                 </div>
-                <div class ="row carousel">
+
+                <div class="about-row row d-flex">
+                    <div class="col">
+                        <p class="about-banner">Yummy.Healthy.Honest</p>
+                        <p class="about-text">Yummba was built with a purpose to provide individuals with an
+                            alternative
+                            to unhealthy & highly-processed snacks and help them take simple steps toward a healthy
+                            lifestyle. Our passion lies in crafting nutritious snacks from whole-food ingredients
+                            that
+                            cater to everyone's taste buds without compromising on health. We hope you enjoy our
+                            products as much as we did making them.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carouselAndContact container">
+                <div class="row carousel">
                     <%- include('../includes/carousel.ejs') %>
                 </div>
-                
+
                 <!--CONTACT-->
                 <div class="contact container row d-flex justify-content-center ">
                     <div class="col">
@@ -49,7 +48,6 @@
                     <div class="contact-item-col flex-column col-sm-3">
                         <a class="contact-item" href="https://www.instagram.com/yummba.in/?igshid=hh2kxk7ndhgf"
                             target="_blank"><i class="fab fa-instagram"></i>&nbsp;@yummba.in</a>
-                            
                     </div>
                     <!-- <div class="flex-column col-sm-3">
                         <p class="contact-item"><i class="fab fa-facebook-square"></i>&nbsp;@yummba.in</p>
@@ -64,12 +62,6 @@
                     </div>
                 </div>
             </div>
-
-
-    </div>
-
-
-
-
+        </div>
     </main>
     <%- include('../includes/end.ejs') %>

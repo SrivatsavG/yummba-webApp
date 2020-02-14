@@ -7,7 +7,7 @@
     
   } */
 .carousel {
-    background-color: #9ee8de;
+    /* background-color: #9ee8de; */
     display: flex;
 }
 
@@ -24,8 +24,13 @@ a {
     font-family: 'Handlee', serif;
     font-size: 3rem;
     color: white;    
-    padding: 2rem;
+    padding: 1rem;
     font-weight: bold;
+  }
+
+  .slideshow_container a{
+    outline: none;
+    text-decoration: none;
   }
 
 
