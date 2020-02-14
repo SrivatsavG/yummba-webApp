@@ -3,7 +3,7 @@ html, body {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 body {
@@ -23,7 +23,6 @@ main {
     padding: 0;
 }
 
-
 .about {
     background-image: url("/images/webpage_images/AllDark.png");
     background-color: #cccccc;
@@ -35,7 +34,7 @@ main {
     padding: 0;
     margin: 0;
     display: block;
-    color:   white;
+    color: white;
 }
 
 .about-row {
@@ -59,8 +58,7 @@ main {
 .contact {
     margin: 0;
     padding: 0;
-    background-color:#9ee8de;
-;
+    background-color: #9ee8de;
 }
 
 .contact .row {
@@ -73,11 +71,11 @@ main {
     text-align: center;
     font-family: 'Handlee', serif;
     font-size: 2rem;
-    color: white;    
+    color: white;
     padding: 2rem;
 }
 
-.contact-last-row{
+.contact-last-row {
     padding-bottom: 2rem;
 }
 
@@ -95,34 +93,30 @@ main {
 }
 
 .contact-item-col {
-    margin-bottom:1rem;
+    margin-bottom: 1rem;
 }
 
-
-.contact-item-col a{
+.contact-item-col a {
     text-decoration: none;
-    color:white;
-    line-height:1.5;
+    color: white;
+    line-height: 1.5;
 }
 
-
-.contact-item-col a:hover 
-{
-     color:white; 
-     text-decoration:none; 
-     cursor:pointer;  
+.contact-item-col a:hover {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.contact-item-col p{
-    padding:0;
-    line-height:1.5;
-    margin:0;
-    color:white;
+.contact-item-col p {
+    padding: 0;
+    line-height: 1.5;
+    margin: 0;
+    color: white;
 }
 
-
-.contact-item-col #contact-item-col-mobile{
-    cursor:default;
+.contact-item-col #contact-item-col-mobile {
+    cursor: default;
 }
 
 .contact-item {
@@ -133,9 +127,9 @@ main {
     font-size: 2rem;
 }
 
-
 .carousel-item {
-    height: 400;width:400px;
+    height: 400;
+    width: 400px;
 }
 
 @media (min-width: 200px) {
@@ -204,7 +198,6 @@ main {
     .about-text {
         font-size: 2rem;
     }
-    
 }
 
 @media (min-width: 992px) {
@@ -216,6 +209,6 @@ main {
         font-size: 5rem;
     }
     .contact-banner {
-        font-size: 3rem;    
+        font-size: 3rem;
     }
 }
