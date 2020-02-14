@@ -2,17 +2,21 @@ body {
     font-family: 'Handlee', serif;
 }
 
+.product-detail {
+    background-color: url("/images/webpage_images/bg4.png");
+}
+
 #productTitle {
     font-weight: bolder;
 }
 
-.productImage img{
+.productImage img {
     border-radius: 50%;
-    border:2px white solid;
+    border: 2px white solid;
     display: flex;
-    margin:auto;
+    margin: auto;
     max-height: 400px;
-    max-width: 80%;    
+    max-width: 80%;
 }
 
 #description {
@@ -29,24 +33,24 @@ body {
     font-weight: bold;
 }
 
-.headerFont{
+.headerFont {
     font-size: 2rem;
     font-weight: bold;
-
 }
-.paraFont{
+
+.paraFont {
     font-size: 1.3rem;
 }
 
-.ingredients{
+.ingredients {
     margin: 2rem auto;
 }
 
-.ingredients img{
-    margin-top:5rem;
+.ingredients img {
+    margin-top: 5rem;
     border-radius: 50%;
     height: 100px;
-    width:auto;
+    width: auto;
 }
 
 .nutrition_wrapper {
@@ -54,7 +58,7 @@ body {
     font-size: 16px;
     letter-spacing: 0.01em;
     padding-bottom: 96px;
-    margin-top:5rem;
+    margin-top: 5rem;
 }
 
 .nutrition_wrapper table {
@@ -64,7 +68,6 @@ body {
     border: 0;
     border-collapse: collapse;
 }
-
 
 .nutrition_wrapper table td.n_left {
     width: 155px;
@@ -78,17 +81,14 @@ body {
     height: 153px;
 }
 
-
 .nutrition_wrapper table table td {
-    border-bottom: 1px solid 
-    #231f20;
+    border-bottom: 1px solid #231f20;
     padding: 3px 1px 2px;
 }
 
 .nutrition_wrapper table td {
     vertical-align: top;
 }
-
 
 .nutrition_wrapper .small_space {
     display: inline-block;
@@ -105,8 +105,7 @@ body {
 
 .nutrition_wrapper table table td.last {
     border-bottom: 0;
-    border-top: 7px solid 
-    #231f20;
+    border-top: 7px solid #231f20;
     padding: 0;
 }
 
@@ -120,8 +119,7 @@ body {
     letter-spacing: 0.03em;
     font-style: normal;
     text-align: left;
-    border-bottom: 7px solid 
-    #231f20;
+    border-bottom: 7px solid #231f20;
     font-weight: bold;
     font-family: Impact, 'Franklin Gothic Demi', Arial, sans-serif;
 }
@@ -143,15 +141,15 @@ body {
     letter-spacing: 0.02em;
 }
 
-.m_hidden{
+.m_hidden {
     display: none;
 }
 
 @media (min-width:800px) {
     .d_hidden {
-        display:none;
+        display: none;
     }
-    .m_hidden{
+    .m_hidden {
         display: flex;
     }
 }

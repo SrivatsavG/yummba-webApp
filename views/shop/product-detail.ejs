@@ -1,51 +1,57 @@
 <%- include('../includes/head.ejs') %>
 <link rel="stylesheet" href="/css/product-detail.css">
 <link rel="stylesheet" href="/css/addToCart.css">
+<link rel="stylesheet" href="/css/main2.css">
 
 </head>
 
 <body>
-    <%- include('../includes/navigation.ejs') %>
-    <main class="centered">
-        <h1 class="titleFont" id="productTitle"><%= product.title %></h1>
-        <hr>
-        <div class="container">
-            <div class="row d-flex justify-content-around">
-                <div class="col-12 col-sm-12 col-md-6">
-                    <div class="productImage">
-                        <img src="https://s3.us-east-2.amazonaws.com/yummba.in/productimages/<%= product.image %>.png"
-                            alt="<%= product.title %>">
+    <div class="product-detail">
+        <%- include('../includes/navigation.ejs') %>
+        <main class="centered">
+            <h1 class="titleFont" id="productTitle"><%= product.title %></h1>
+            <hr>
+            <div class="container">
+                <div class="row d-flex justify-content-around">
+                    <div class="col-12 col-sm-12 col-md-6">
+                        <div class="productImage">
+                            <img src="https://s3.us-east-2.amazonaws.com/yummba.in/productimages/<%= product.image %>.png"
+                                alt="<%= product.title %>">
+                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6">
-                    <p class="paraFont" id="description "><%= product.description %></p>
-                    <hr>
-                    <p class="paraFont" id="price">Price: Rs <%= product.price %></p>
-                    <hr>
+                    <div class="col-12 col-sm-12 col-md-6">
+                        <p class="paraFont" id="description "><%= product.description %></p>
+                        <hr>
+                        <p class="paraFont" id="price">Price: Rs <%= product.price %></p>
+                        <hr>
 
-                    <!-- <% if (isAuthenticated) { %>
+                        <!-- <% if (isAuthenticated) { %>
                         <%- include('../includes/add-to-cart.ejs') %>
                     <% } %> -->
-                    <%- include('../includes/add-to-cart.ejs') %>
-                </div>
-            </div>
-            <div class="row d-flex justify-content-around">
-                <div class="ingredients col">
-                    <div class="row d-flex justify-content-around ingredients">
-                        <h1 class="headerFont">Ingredients</h1>
+                        <%- include('../includes/add-to-cart.ejs') %>
                     </div>
-                    <div class="row d-flex justify-content-around">
-                        <% for(let ingredient of product.ingredients) { %>
+                </div>
+                <div class="row d-flex justify-content-around">
+                    <div class="ingredients col">
+                        <div class="row d-flex justify-content-around ingredients">
+                            <h1 class="headerFont">Ingredients</h1>
+                        </div>
+                        <div class="row d-flex justify-content-around">
+                            <% for(let ingredient of product.ingredients) { %>
                             <div class="col">
-                                <img src="https://s3.us-east-2.amazonaws.com/yummba.in/ingredients/<%= ingredient %>.jpg" alt="<%= product.title %>">
-                                <div class="ingredients-title"><p><%=ingredient%></p></div>    
+                                <img src="https://s3.us-east-2.amazonaws.com/yummba.in/ingredients/<%= ingredient %>.jpg"
+                                    alt="<%= product.title %>">
+                                <div class="ingredients-title">
+                                    <p><%=ingredient%></p>
+                                </div>
                             </div>
-                        <% } %>
+                            <% } %>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-        <%- include('../includes/nutrition.ejs')%>
-    </main>
-    <%- include('../includes/end.ejs') %>
+            </div>
+            <%- include('../includes/nutrition.ejs')%>
+        </main>
+        <%- include('../includes/end.ejs') %>
+    </div>
