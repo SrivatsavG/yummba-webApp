@@ -299,26 +299,30 @@ exports.getCheckoutSuccess = (req, res, next) => {
     .then(() => {
       transporter.sendMail({
         to:req.user.email,
-        from:'yummba@yummba.com',
+        from:'yummba@yummba.in',
         subject:'Yummba order placed',
         html:`<h1>Thank you for shopping with us.</h1><p>Your products will be delivered to ${req.user.address}</p><p>For support, please contact</p><p>chandni@yummba.in</p><p>9324621020</p>`
         }); 
     })
     .then(() => {
       transporter.sendMail({
-        to:chandni,
-        from:'chandni@yummba.in',
+        to:'chandni@yummba.in',
+        from:'yummba@yummba.in',
         subject:'An order was placed',
         html:`<h1>An order was placed by ${req.user.email}</h1>.<p>Customer mobile : ${req.user.mobile}</p><p>User id: ${req.user}</p><p> To be delivered at ${req.user.address}</p>`
         }); 
     })
     .then(result => {
+      console.log("clearCart called");
       return req.user.clearCart();
     })  
     .then(() => {
+      console.log("orders called");
       res.redirect('/orders');
     })
     .catch(err => {
+      console.log("ERROR IS")
+      console.log(err)
       const error = new Error(err);
       error.httpStatusCode = 500;
       return next(error);
