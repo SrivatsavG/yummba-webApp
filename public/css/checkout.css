@@ -55,7 +55,9 @@ body {
 
 #total {
     color: white;
-    margin: 2rem 0 0 0;
+    margin: 2rem auto;
+    text-align: center;
+    
 }
 
 #buyButton {
@@ -64,10 +66,10 @@ body {
     color: white;
     border: 2px white solid;
     margin: auto;
-    margin-top: 1rem;
     padding: 1rem;
     width:10rem;
     font-size: 1.5rem;
+    display:block;
 }
 
 #buyButton:hover {
