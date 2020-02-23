@@ -19,13 +19,13 @@ const Product = require('../models/product');
 const Order = require("../models/order");
 
 exports.getProducts = (req, res, next) => {
-  
-  let message = req.flash('addedToCart');
-  
-  if (message.length > 0) {
-    message = message[0];
-  } else {
-    message = null;
+
+  let message = req.flash('addedToCart');
+
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
   }
 
   Product.find() // mongoose method:- gives all products
@@ -125,7 +125,7 @@ exports.postCart = (req, res, next) => {
   const prodId = req.body.productId;
   const quantity = req.body.quantity;
 
-  let message=''
+  let message = ''
 
   Product.findById(prodId)
     .then(product => {
@@ -135,7 +135,7 @@ exports.postCart = (req, res, next) => {
     })
     .then(result => {
       console.log(result);
-      req.flash("addedToCart",message);
+      req.flash("addedToCart", message);
       res.redirect("/products");
     });
 };
@@ -295,7 +295,7 @@ exports.getCheckoutSuccess = (req, res, next) => {
         products: products
       });
       return order.save();
-    })  
+    })
     .then(() => {
       transporter.sendMail({
         to:req.user.email,
@@ -305,17 +305,25 @@ exports.getCheckoutSuccess = (req, res, next) => {
         }); 
     })
     .then(() => {
+      const products = req.user.cart.items.map(i => {
+        return { quantity: i.quantity, product: { ...i.productId._doc } };
+      });
+      let cartItems = []; 
+      products.forEach(product => {
+        cartItems.push(`${product.quantity} - ${product.product.title}.`)
+      })
+      let mailContent = `<h1>An order was placed by ${req.user.email}</h1>.<p>Customer mobile : ${req.user.mobile}</p><p>User id: ${req.user._id}</p><p> To be delivered at ${req.user.address}</p><p>The order is</p><p>${cartItems}</p>`
       transporter.sendMail({
-        to:'chandni@yummba.in',
-        from:'yummba@yummba.in',
-        subject:'An order was placed',
-        html:`<h1>An order was placed by ${req.user.email}</h1>.<p>Customer mobile : ${req.user.mobile}</p><p>User id: ${req.user}</p><p> To be delivered at ${req.user.address}</p>`
-        }); 
+        to: 'chandni@yummba.in',
+        from: 'yummba@yummba.in',
+        subject: 'An order was placed',
+        html: mailContent
+      });
     })
     .then(result => {
       console.log("clearCart called");
       return req.user.clearCart();
-    })  
+    })
     .then(() => {
       console.log("orders called");
       res.redirect('/orders');
