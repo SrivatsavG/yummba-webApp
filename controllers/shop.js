@@ -191,17 +191,22 @@ exports.getCheckout = (req, res, next) => {
     })
     .then(session => {
 
+      if (total >= 300) {
+        res.render('shop/checkoutPayment', {
+          path: '/checkout',
+          pageTitle: 'Checkout',
+          user: req.user || null,
+          admin: process.env.ADMIN,
+          products: products,
+          totalSum: total,
+          sessionId: session.id
 
-      res.render('shop/checkoutPayment', {
-        path: '/checkout',
-        pageTitle: 'Checkout',
-        user: req.user || null,
-        admin: process.env.ADMIN,
-        products: products,
-        totalSum: total,
-        sessionId: session.id
+        })
 
-      })
+      } else {
+        res.redirect('/cart');
+      }
+
     })
     .catch(err => {
       console.log("REACHED 3!!");
@@ -298,17 +303,17 @@ exports.getCheckoutSuccess = (req, res, next) => {
     })
     .then(() => {
       transporter.sendMail({
-        to:req.user.email,
-        from:'yummba@yummba.in',
-        subject:'Yummba order placed',
-        html:`<h1>Thank you for shopping with us.</h1><p>Your products will be delivered to ${req.user.address}</p><p>For support, please contact</p><p>chandni@yummba.in</p><p>9324621020</p>`
-        }); 
+        to: req.user.email,
+        from: 'yummba@yummba.in',
+        subject: 'Yummba order placed',
+        html: `<h1>Thank you for shopping with us.</h1><p>Your products will be delivered to ${req.user.address}</p><p>For support, please contact</p><p>chandni@yummba.in</p><p>9324621020</p>`
+      });
     })
     .then(() => {
       const products = req.user.cart.items.map(i => {
         return { quantity: i.quantity, product: { ...i.productId._doc } };
       });
-      let cartItems = []; 
+      let cartItems = [];
       products.forEach(product => {
         cartItems.push(`${product.quantity} - ${product.product.title}.`)
       })

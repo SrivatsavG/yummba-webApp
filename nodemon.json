@@ -12,7 +12,15 @@
         "AWS_REGION":"us-east-2",
 
 
-        "PORT":"4000"
+        "PORT":"3000"
 
+    },
+    "admin":{
+       "DEV_ADMIN": "5e65d88df742743ee1978a30",
+       "REAL ADMIN":  "5e4288fad818ac720ae0e892"
     }
 }
+
+
+
+

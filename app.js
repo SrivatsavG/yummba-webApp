@@ -19,6 +19,7 @@ const User = require("./models/user");
 
 //
 
+const MONGODB_DEV_URI ='mongodb+srv://srivatsav:0904@cluster0-gelfa.mongodb.net/test?retryWrites=true&w=majority';
 const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-ejo76.mongodb.net/${process.env.MONGO_DB}`;
 
 const app = express();

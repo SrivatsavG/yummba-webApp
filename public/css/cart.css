@@ -155,6 +155,12 @@ main {
   outline:none;
 }
 
+.minOrder{
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+
 #mobileRow{
   margin-top:2rem;
   font-size: 1rem;

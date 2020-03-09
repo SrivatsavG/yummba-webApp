@@ -1,5 +1,6 @@
 const mongodb = require("mongodb");
 const Product = require('../models/product');
+const User = require('../models/user');
 const Blog = require('../models/blog');
 const fileHelper = require('../util/file');
 
@@ -133,7 +134,7 @@ exports.postAddProduct = (req, res, next) => {
 
   //NUTRITION
   const servingSize = req.body.servingSize;
-  const calories =req.body.calories;
+  const calories = req.body.calories;
   const totalFat = req.body.totalFat;
   const saturatedFat = req.body.saturatedFat;
   const transFat = req.body.transFat;
@@ -161,8 +162,8 @@ exports.postAddProduct = (req, res, next) => {
     image: image,
     userId: req.user,
     ingredients: ingredients,
-    servingSize:servingSize,
-    calories:calories,
+    servingSize: servingSize,
+    calories: calories,
     totalFat: totalFat,
     saturatedFat: saturatedFat,
     transFat: transFat,
@@ -349,7 +350,7 @@ exports.postEditProduct = (req, res, next) => {
       foundProduct.totalFat = totalFat;
       foundProduct.saturatedFat = saturatedFat;
       foundProduct.transFat = transFat;
-      foundProduct.cholestoral =cholestoral;
+      foundProduct.cholestoral = cholestoral;
       foundProduct.sodium = sodium;
       foundProduct.totalCarbohydrate = totalCarbohydrate;
       foundProduct.dietaryFiber = dietaryFiber;
@@ -418,59 +419,104 @@ exports.getProducts = (req, res, next) => {
 
 };
 
-exports.deleteProduct = (req, res, next) => {
+// exports.deleteProduct = (req, res, next) => {
+
+//   let user = req.user || null;
+
+//   if (user._id.toString() == process.env.ADMIN) {
+
+//     //ASYNCHRONOUSE====>delete requests are not allowed to have req.body(convention)
+//     //const prodId = req.body.productId; IS REMOVED
+
+//     const prodId = req.params.productId;
+
+//     //delete from system
+//     Product.findByIdAndRemove(prodId)
+//       .then(foundProduct => {
+//         if (!foundProduct) {
+//           return next(new Error('Product not found'));
+//         }
+
+//         // fileHelper.deleteFile(foundProduct.imageUrl);
+//         // //delete from database
+
+//         return Product.findByIdAndRemove(prodId) //mongoose method        
+//       })
+//       .then(() => {
+//         console.log('DESTROYED PRODUCT');
+
+//         //ASYNCHRONOUSE=====>NOT REDIRECT ANYMORE
+//         //res.redirect('/admin/products');
+
+//         res.status(200).json({ message: 'success' });
+//       })
+//       .catch(err => {
+//         //ASYCNCHRONOUSE===>CANNOT USE OUR DEFAULT ERROR HANDLER
+//         // const error = new Error(err);
+//         // //
+//         // error.httpStatusCode = 500;
+//         // //when we pass next with an error as an argument, we tell express to skip all other 
+//         // //middleware and go to the error handling middleware
+//         // return next(error);
+
+//         res.status(500).json({ message: 'deleting failed' });
+//       });
+//   } else {
+//     const error = new Error(err);
+//     //
+//     error.httpStatusCode = 500;
+//     //when we pass next with an error as an argument, we tell express to skill all other 
+//     //middleware and go to the error handling middleware
+//     return next(error);
+//   }
+// };
 
 
+exports.deleteProductAndFromUserCart = (req, res, next) => {
   let user = req.user || null;
-
   if (user._id.toString() == process.env.ADMIN) {
-
-    //ASYNCHRONOUSE====>delete requests are not allowed to have req.body(convention)
-    //const prodId = req.body.productId; IS REMOVED
-
+   
     const prodId = req.params.productId;
-
-    //delete from system
-    Product.findByIdAndRemove(prodId)
-      .then(foundProduct => {
-        if (!foundProduct) {
-          return next(new Error('Product not found'));
+    console.log("PRODUCT ID is");
+    console.log(prodId);
+    User.find()
+      .then(users => {
+        for (let user of users) {
+          let cart = user.cart.items;
+          let updatedCart = [];
+          console.log("OLD CART IS:")
+          console.log(cart)
+          updatedCart = cart.filter(product => {
+            return product.productId.toString() != prodId
+          })
+          console.log("UPDATED CART IS")
+          user.cart.items = updatedCart;
+          console.log(user.cart.items);
+          user.save();
         }
-
-        // fileHelper.deleteFile(foundProduct.imageUrl);
-        // //delete from database
-
-        return Product.findByIdAndRemove(prodId) //mongoose method        
+      })
+      .then(() => {
+        return Product.findByIdAndRemove(prodId);
       })
       .then(() => {
         console.log('DESTROYED PRODUCT');
-
-        //ASYNCHRONOUSE=====>NOT REDIRECT ANYMORE
-        //res.redirect('/admin/products');
-
         res.status(200).json({ message: 'success' });
       })
       .catch(err => {
-        //ASYCNCHRONOUSE===>CANNOT USE OUR DEFAULT ERROR HANDLER
-        // const error = new Error(err);
-        // //
-        // error.httpStatusCode = 500;
-        // //when we pass next with an error as an argument, we tell express to skip all other 
-        // //middleware and go to the error handling middleware
-        // return next(error);
-
+        console.log(err)
         res.status(500).json({ message: 'deleting failed' });
+        
       });
   } else {
     const error = new Error(err);
-    //
     error.httpStatusCode = 500;
-    //when we pass next with an error as an argument, we tell express to skill all other 
-    //middleware and go to the error handling middleware
+    console.log(error)
     return next(error);
-  }
-};
 
+  }
+
+
+};
 
 exports.getAddBlog = (req, res, next) => {
   let user = req.user || null;
