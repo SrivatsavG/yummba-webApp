@@ -1,18 +1,39 @@
 <%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <link rel="stylesheet" href="/css/product.css">
 <link rel="stylesheet" href="/css/index.css">
 
 <link rel="stylesheet" href="/css/carousel.css">
 
+
+
 </head>
 
 <body>
 
+      <div id="id01" class="w3-modal" style="display: block;">
+        <div class="w3-modal-content" style="display: block;">
+          <header class="w3-container w3-teal" style="display: block;"> 
+            <span onclick="document.getElementById('id01').style.display='none'" 
+            class="w3-button w3-display-topright" style="color:black;">&times;</span>
+            <h2>We have stopped accepting orders due to COVID-19</h2>
+          </header>
+          <div class="w3-container">
+            <p style="color:black;">Due to the COVID-19 Virus, we have decided to stop accepting all orders as this puts a risk to our team, our vendors' staff, the courier boys, the warehouse workers, and the customer. Customers can continue to browse the website, but will not be able to place orders until further notice. Let's fight this together. Stay indoors, stay safe.</p>
+
+          </div>
+          <footer class="w3-container w3-teal">
+            <!-- <p>Modal Footer</p> -->
+          </footer>
+        </div>
+      </div>
 
     <!--NAVIGATION WAS HERE-->
 
     <main>
         <div class="indexPageContainer">
+            
             <div class="about container">
                 <div class="row d-flex">
                     <%- include('../includes/navigation.ejs') %>

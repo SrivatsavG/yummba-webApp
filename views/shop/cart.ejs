@@ -37,7 +37,9 @@
                 <div id="submitAddressContainer" class="col">
                     <form action="/submitAddress" method="POST">
                         <div id="addressRow" class="row d-flex justify-content-around">
+                            
                             <div class="flex-column centered">
+                                <p>All orders stopped until further notice.</p>
                                 <span>Delivery address</span>
                                 <input class="centered" type="text " name="address1" placeholder="Address line 1"
                                     required>
@@ -59,7 +61,8 @@
                         <div class="row d-flex justify-content-around">
                             <div class="flex-column centered">
                                 <input type="hidden" name='_csrf' value="<%= csrfToken %>">
-                                <input id="reviewButton" type="submit" value="Review Order">
+                                <!-- <input id="reviewButton" type="submit" value="Review Order"> -->
+                                <button id="reviewButton" type="" disabled>All orders stopped</button>
                             </div>
 
                         </div>
