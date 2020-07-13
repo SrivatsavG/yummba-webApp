@@ -6,7 +6,8 @@ const blogSchema = new Schema({
     title : {type:String,required:true},
     description:{type:String, required:true},
     imageUrl:{type:String},
-    blogUrl: {type:String,required:true}
+    blogUrl: {type:String},
+    content:{type:String}
 })
 
 

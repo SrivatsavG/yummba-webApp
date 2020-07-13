@@ -32,5 +32,9 @@ router.post('/add-blog', isAuth,adminController.postAddBlog);
 
 router.delete('/blogs/:blogId', isAuth,adminController.deleteBlog);
 
+router.get('/write-blog', isAuth,adminController.getWriteBlog);
+
+router.post('/write-blog', isAuth,adminController.postWriteBlog);
+
 
 module.exports = router;

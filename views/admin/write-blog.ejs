@@ -1,0 +1,38 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/addBlog.css">
+<link rel="stylesheet" href="/css/main2.css">
+
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+
+        <div id="blog_container" class="container">
+
+            <form class="blog_container-form" action="/admin/write-blog" method="POST" enctype='multipart/form-data'>
+                <div class="blog_container-form-control">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" required>
+                </div>
+                <div class="blog_container-form-control">
+                    <label for="imageUrl">Image URL</label>
+                    <input type="text" name="imageUrl" id="imageUrl">
+                </div>
+                <div class="blog_container-form-control">
+                    <label for="description">Short Description</label>
+                    <textarea name="description" id="description" rows="5" required style="width: 80%; display: block;"></textarea>
+                </div>
+                <div class="blog_container-form-control">
+                    <label for="content">Content</label>
+                    <textarea name="content" id="content" rows="30" required style="width: 80%; display: block; overflow: auto;"></textarea>
+                </div>
+                <input type="hidden" name='_csrf' value="<%= csrfToken %>">
+                <button class="blog_container-form-btn" type="submit">Add Blog</button>
+            </form>
+        </div>
+    </main>
+
+    <%- include('../includes/end.ejs') %>

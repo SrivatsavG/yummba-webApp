@@ -1,38 +1,34 @@
 const mongodb = require("mongodb");
-const Product = require('../models/product');
-const User = require('../models/user');
-const Blog = require('../models/blog');
-const fileHelper = require('../util/file');
+const Product = require("../models/product");
+const User = require("../models/user");
+const Blog = require("../models/blog");
+const fileHelper = require("../util/file");
 
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 const ObjectId = mongodb.ObjectID;
-
 
 //
 
 //added
 exports.getAddProduct = (req, res, next) => {
-
-
   let user = req.user || null;
 
   if (user._id.toString() == process.env.ADMIN) {
-    res.render('admin/edit-product', {
-      pageTitle: 'Add Product',
-      path: '/admin/add-product',
+    res.render("admin/edit-product", {
+      pageTitle: "Add Product",
+      path: "/admin/add-product",
       editing: false,
-      errorMessage: '',
+      errorMessage: "",
       validationErrors: [],
       user: req.user || null,
       admin: process.env.ADMIN,
-
     });
   } else {
     const error = new Error(err);
     //
     error.httpStatusCode = 500;
-    //when we pass next with an error as an argument, we tell express to skill all other 
+    //when we pass next with an error as an argument, we tell express to skill all other
     //middleware and go to the error handling middleware
     return next(error);
   }
@@ -86,7 +82,7 @@ exports.getAddProduct = (req, res, next) => {
 //       const error = new Error(err);
 //       //
 //       error.httpStatusCode = 500;
-//       //when we pass next with an error as an argument, we tell express to skill all other 
+//       //when we pass next with an error as an argument, we tell express to skill all other
 //       //middleware and go to the error handling middleware
 //       return next(error);
 //     });
@@ -97,7 +93,6 @@ exports.postAddProduct = (req, res, next) => {
   const image = req.body.image;
   const price = req.body.price;
   const description = req.body.description;
-
 
   //INGREDIENTS
   var ingredients = [];
@@ -130,8 +125,6 @@ exports.postAddProduct = (req, res, next) => {
   if (req.body.ingredients11) ingredients.push(req.body.ingredients11);
   if (req.body.ingredients12) ingredients.push(req.body.ingredients12);
 
-
-
   //NUTRITION
   const servingSize = req.body.servingSize;
   const calories = req.body.calories;
@@ -150,10 +143,20 @@ exports.postAddProduct = (req, res, next) => {
 
   console.log(title, price, image, description);
   console.log(ingredients);
-  console.log(totalFat, saturatedFat, transFat, cholestoral, sodium, totalCarbohydrate, dietaryFiber, fruitSugar, protein, calcium, iron, potassium);
-
-
-
+  console.log(
+    totalFat,
+    saturatedFat,
+    transFat,
+    cholestoral,
+    sodium,
+    totalCarbohydrate,
+    dietaryFiber,
+    fruitSugar,
+    protein,
+    calcium,
+    iron,
+    potassium
+  );
 
   const product = new Product({
     title: title,
@@ -175,66 +178,63 @@ exports.postAddProduct = (req, res, next) => {
     protein: protein,
     calcium: calcium,
     iron: iron,
-    potassium: potassium
+    potassium: potassium,
   });
   product
     .save()
-    .then(result => {
+    .then((result) => {
       // console.log(result);
-      console.log('Created Product');
-      res.redirect('/admin/products');
+      console.log("Created Product");
+      res.redirect("/admin/products");
     })
-    .catch(err => {
+    .catch((err) => {
       const error = new Error(err);
       //
       error.httpStatusCode = 500;
-      //when we pass next with an error as an argument, we tell express to skill all other 
+      //when we pass next with an error as an argument, we tell express to skill all other
       //middleware and go to the error handling middleware
       return next(error);
     });
 };
 
 exports.getEditProduct = (req, res, next) => {
-
   let user = req.user || null;
 
   if (user._id.toString() == process.env.ADMIN) {
-
     const editMode = req.query.edit;
     if (!editMode) {
-      return res.redirect('/');
+      return res.redirect("/");
     }
     const prodId = req.params.productId;
     Product.findById(prodId)
-      .then(product => {
+      .then((product) => {
         if (!product) {
-          return res.redirect('/');
+          return res.redirect("/");
         }
-        res.render('admin/edit-product', {
-          pageTitle: 'Edit Product',
-          path: '/admin/edit-product',
+        res.render("admin/edit-product", {
+          pageTitle: "Edit Product",
+          path: "/admin/edit-product",
           editing: editMode,
           product: product,
           errorMessage: null,
           validationErrors: [],
           user: req.user || null,
-          admin: process.env.ADMIN
+          admin: process.env.ADMIN,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         const error = new Error(err);
         //
         error.httpStatusCode = 500;
-        //when we pass next with an error as an argument, we tell express to skill all other 
+        //when we pass next with an error as an argument, we tell express to skill all other
         //middleware and go to the error handling middleware
         return next(error);
       });
-
   } else {
     const error = new Error(err);
     //
     error.httpStatusCode = 500;
-    //when we pass next with an error as an argument, we tell express to skill all other 
+    //when we pass next with an error as an argument, we tell express to skill all other
     //middleware and go to the error handling middleware
     return next(error);
   }
@@ -248,7 +248,6 @@ exports.getEditProduct = (req, res, next) => {
 //   const updatedPrice = req.body.price;
 //   const image = req.image; // CHANGED THIS FOR FILE UPLOAD
 //   const updatedDesc = req.body.description;
-
 
 //   Product.findById(prodId)
 //     .then(foundProduct => {
@@ -274,13 +273,11 @@ exports.getEditProduct = (req, res, next) => {
 //       const error = new Error(err);
 //       //
 //       error.httpStatusCode = 500;
-//       //when we pass next with an error as an argument, we tell express to skill all other 
+//       //when we pass next with an error as an argument, we tell express to skill all other
 //       //middleware and go to the error handling middleware
 //       return next(error);
 //     });
 // };
-
-
 
 exports.postEditProduct = (req, res, next) => {
   const prodId = req.body.productId;
@@ -288,7 +285,6 @@ exports.postEditProduct = (req, res, next) => {
   const updatedPrice = req.body.price;
   const updatedImage = req.body.image; // CHANGED THIS FOR FILE UPLOAD
   const updatedDesc = req.body.description;
-
 
   //INGREDIENTS
   var ingredients = [];
@@ -337,9 +333,8 @@ exports.postEditProduct = (req, res, next) => {
   const iron = req.body.iron;
   const potassium = req.body.potassium;
 
-
   Product.findById(prodId)
-    .then(foundProduct => {
+    .then((foundProduct) => {
       foundProduct.servingSize = servingSize;
       foundProduct.calories = calories;
       foundProduct.title = updatedTitle;
@@ -360,63 +355,54 @@ exports.postEditProduct = (req, res, next) => {
       foundProduct.iron = iron;
       foundProduct.potassium = potassium;
 
-
-
-
       // product will be a full mongoose object. Save will update the object on its own
-      return foundProduct.save().then(result => {
+      return foundProduct.save().then((result) => {
         console.log("============Product updated==========");
         res.redirect("/admin/products");
-      })
+      });
     })
 
-    .catch(err => {
+    .catch((err) => {
       const error = new Error(err);
       //
       error.httpStatusCode = 500;
-      //when we pass next with an error as an argument, we tell express to skill all other 
+      //when we pass next with an error as an argument, we tell express to skill all other
       //middleware and go to the error handling middleware
       return next(error);
     });
 };
 
 exports.getProducts = (req, res, next) => {
-
-
   let user = req.user || null;
 
   if (user._id.toString() == process.env.ADMIN) {
-
     Product.find()
       //.populate("userId")
-      .then(products => {
-        res.render('admin/products', {
+      .then((products) => {
+        res.render("admin/products", {
           prods: products,
-          pageTitle: 'Admin Products',
-          path: '/admin/products',
+          pageTitle: "Admin Products",
+          path: "/admin/products",
           user: req.user || null,
-          admin: process.env.ADMIN
+          admin: process.env.ADMIN,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         const error = new Error(err);
         //
         error.httpStatusCode = 500;
-        //when we pass next with an error as an argument, we tell express to skill all other 
+        //when we pass next with an error as an argument, we tell express to skill all other
         //middleware and go to the error handling middleware
         return next(error);
       });
-
   } else {
     const error = new Error(err);
     //
     error.httpStatusCode = 500;
-    //when we pass next with an error as an argument, we tell express to skill all other 
+    //when we pass next with an error as an argument, we tell express to skill all other
     //middleware and go to the error handling middleware
     return next(error);
   }
-
-
 };
 
 // exports.deleteProduct = (req, res, next) => {
@@ -440,7 +426,7 @@ exports.getProducts = (req, res, next) => {
 //         // fileHelper.deleteFile(foundProduct.imageUrl);
 //         // //delete from database
 
-//         return Product.findByIdAndRemove(prodId) //mongoose method        
+//         return Product.findByIdAndRemove(prodId) //mongoose method
 //       })
 //       .then(() => {
 //         console.log('DESTROYED PRODUCT');
@@ -455,7 +441,7 @@ exports.getProducts = (req, res, next) => {
 //         // const error = new Error(err);
 //         // //
 //         // error.httpStatusCode = 500;
-//         // //when we pass next with an error as an argument, we tell express to skip all other 
+//         // //when we pass next with an error as an argument, we tell express to skip all other
 //         // //middleware and go to the error handling middleware
 //         // return next(error);
 
@@ -465,31 +451,29 @@ exports.getProducts = (req, res, next) => {
 //     const error = new Error(err);
 //     //
 //     error.httpStatusCode = 500;
-//     //when we pass next with an error as an argument, we tell express to skill all other 
+//     //when we pass next with an error as an argument, we tell express to skill all other
 //     //middleware and go to the error handling middleware
 //     return next(error);
 //   }
 // };
 
-
 exports.deleteProductAndFromUserCart = (req, res, next) => {
   let user = req.user || null;
   if (user._id.toString() == process.env.ADMIN) {
-   
     const prodId = req.params.productId;
     console.log("PRODUCT ID is");
     console.log(prodId);
     User.find()
-      .then(users => {
+      .then((users) => {
         for (let user of users) {
           let cart = user.cart.items;
           let updatedCart = [];
-          console.log("OLD CART IS:")
-          console.log(cart)
-          updatedCart = cart.filter(product => {
-            return product.productId.toString() != prodId
-          })
-          console.log("UPDATED CART IS")
+          console.log("OLD CART IS:");
+          console.log(cart);
+          updatedCart = cart.filter((product) => {
+            return product.productId.toString() != prodId;
+          });
+          console.log("UPDATED CART IS");
           user.cart.items = updatedCart;
           console.log(user.cart.items);
           user.save();
@@ -499,47 +483,40 @@ exports.deleteProductAndFromUserCart = (req, res, next) => {
         return Product.findByIdAndRemove(prodId);
       })
       .then(() => {
-        console.log('DESTROYED PRODUCT');
-        res.status(200).json({ message: 'success' });
+        console.log("DESTROYED PRODUCT");
+        res.status(200).json({ message: "success" });
       })
-      .catch(err => {
-        console.log(err)
-        res.status(500).json({ message: 'deleting failed' });
-        
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ message: "deleting failed" });
       });
   } else {
     const error = new Error(err);
     error.httpStatusCode = 500;
-    console.log(error)
+    console.log(error);
     return next(error);
-
   }
-
-
 };
 
 exports.getAddBlog = (req, res, next) => {
   let user = req.user || null;
 
   if (user._id.toString() == process.env.ADMIN) {
-    res.render('admin/add-blog', {
-      pageTitle: 'Add Blog',
-      path: '/admin/add-blog',
+    res.render("admin/add-blog", {
+      pageTitle: "Add Blog",
+      path: "/admin/add-blog",
       user: req.user || null,
       admin: process.env.ADMIN,
-
     });
   } else {
     const error = new Error(err);
     //
     error.httpStatusCode = 500;
-    //when we pass next with an error as an argument, we tell express to skill all other 
+    //when we pass next with an error as an argument, we tell express to skill all other
     //middleware and go to the error handling middleware
     return next(error);
   }
-}
-
-
+};
 
 exports.postAddBlog = (req, res, next) => {
   const title = req.body.title;
@@ -551,25 +528,25 @@ exports.postAddBlog = (req, res, next) => {
     title: title,
     description: description,
     imageUrl: imageUrl,
-    blogUrl: blogUrl
+    blogUrl: blogUrl,
   });
 
   blog
     .save()
-    .then(result => {
+    .then((result) => {
       // console.log(result);
-      console.log('Created Blog');
-      res.redirect('/admin/add-blog');
+      console.log("Created Blog");
+      res.redirect("/admin/add-blog");
     })
-    .catch(err => {
+    .catch((err) => {
       const error = new Error(err);
       //
       error.httpStatusCode = 500;
-      //when we pass next with an error as an argument, we tell express to skill all other 
+      //when we pass next with an error as an argument, we tell express to skill all other
       //middleware and go to the error handling middleware
       return next(error);
     });
-}
+};
 
 exports.deleteBlog = (req, res, next) => {
   console.log("REACHED ROUTE");
@@ -577,48 +554,102 @@ exports.deleteBlog = (req, res, next) => {
   let user = req.user || null;
 
   if (user._id.toString() == process.env.ADMIN) {
-
     //ASYNCHRONOUS====>delete requests are not allowed to have req.body(convention) so we do in params
 
     const blogId = req.params.blogId;
 
     //delete from system
     Blog.findByIdAndRemove(blogId)
-      .then(foundBlog => {
+      .then((foundBlog) => {
         if (!foundBlog) {
-          return next(new Error('Blog not found'));
+          return next(new Error("Blog not found"));
         }
 
         // fileHelper.deleteFile(foundProduct.imageUrl);
         //delete from database
 
-        return Blog.findByIdAndRemove(blogId) //mongoose method        
+        return Blog.findByIdAndRemove(blogId); //mongoose method
       })
       .then(() => {
-        console.log('DESTROYED BLOG');
+        console.log("DESTROYED BLOG");
 
         //ASYNCHRONOUS=====>NOT REDIRECT ANYMORE
         //res.redirect('/admin/products');
 
-        res.status(200).json({ message: 'success' });
+        res.status(200).json({ message: "success" });
       })
-      .catch(err => {
+      .catch((err) => {
         //ASYCNCHRONOUSE===>CANNOT USE OUR DEFAULT ERROR HANDLER
         // const error = new Error(err);
         // //
         // error.httpStatusCode = 500;
-        // //when we pass next with an error as an argument, we tell express to skip all other 
+        // //when we pass next with an error as an argument, we tell express to skip all other
         // //middleware and go to the error handling middleware
         // return next(error);
 
-        res.status(500).json({ message: 'deleting failed' });
+        res.status(500).json({ message: "deleting failed" });
       });
   } else {
     const error = new Error(err);
     //
     error.httpStatusCode = 500;
-    //when we pass next with an error as an argument, we tell express to skill all other 
+    //when we pass next with an error as an argument, we tell express to skill all other
     //middleware and go to the error handling middleware
     return next(error);
   }
-}
+};
+
+exports.getWriteBlog = (req, res, next) => {
+  let user = req.user || null;
+
+  if (user._id.toString() == process.env.ADMIN) {
+    res.render("admin/write-blog", {
+      pageTitle: "Write Blog",
+      path: "/admin/write-blog",
+      user: req.user || null,
+      admin: process.env.ADMIN,
+    });
+  } else {
+    const error = new Error(err);
+    //
+    error.httpStatusCode = 500;
+    //when we pass next with an error as an argument, we tell express to skill all other
+    //middleware and go to the error handling middleware
+    return next(error);
+  }
+};
+
+exports.postWriteBlog = (req, res, next) => {
+  console.log("REACHED POST WRITE BLOG");
+
+  const title = req.body.title;
+  const imageUrl = req.body.imageUrl;
+  const description = req.body.description;
+  const content = req.body.content;
+
+  console.log(content);
+
+  const blog = new Blog({
+    title: title,
+    description: description,
+    imageUrl: imageUrl,
+    content: content,
+  });
+
+  blog
+    .save()
+    .then((result) => {
+      console.log("THE RESULT IS");
+      console.log(result);
+      console.log("Created Blog");
+      res.redirect("/admin/write-blog");
+    })
+    .catch((err) => {
+      const error = new Error(err);
+      //
+      error.httpStatusCode = 500;
+      //when we pass next with an error as an argument, we tell express to skill all other
+      //middleware and go to the error handling middleware
+      return next(error);
+    });
+};
