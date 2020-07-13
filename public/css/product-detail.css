@@ -8,6 +8,8 @@ body {
 
 #productTitle {
     font-weight: bolder;
+    text-align: center;
+    padding-top: 1rem;
 }
 
 .productImage img {
@@ -22,6 +24,7 @@ body {
 #description {
     margin-top: 2rem;
     text-align: left;
+    font-size: 1rem;
 }
 
 #price {
@@ -38,19 +41,20 @@ body {
     font-weight: bold;
 }
 
-.paraFont {
-    font-size: 1.3rem;
-}
 
 .ingredients {
     margin: 2rem auto;
 }
 
 .ingredients img {
-    margin-top: 5rem;
     border-radius: 50%;
-    height: 100px;
-    width: auto;
+    height: auto;
+    width: 100%;
+    margin:auto;
+}
+
+.ingredients-title{
+    text-align: center;
 }
 
 .nutrition_wrapper {
