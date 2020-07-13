@@ -1,220 +1,251 @@
-html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
 }
 
 body {
-    background-color: #ffc9b5;
-    color: white;
-    font-weight: bold;
-    font-size: large;
-    font-family: 'Handlee', serif;
+  background-color: #ffc9b5;
+  color: white;
+  font-weight: bold;
+  font-size: large;
+  font-family: "Handlee", serif;
 }
 
 main {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .indexPageContainer {
-    padding: 0;
+  padding: 0;
 }
 
 .about {
-    background-image: url("/images/webpage_images/AllDark.png");
-    background-color: #cccccc;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    padding: 0;
-    margin: 0;
-    display: block;
-    color: white;
+  background-image: url("/images/webpage_images/AllDark.png");
+  background-color: #cccccc;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  display: block;
+  color: white;
 }
 
 .about-row {
-    margin: 0;
+  margin: 0;
 }
 
 .about-banner {
-    text-align: center;
-    font-size: 5rem;
-    position: relative;
-    word-wrap: break-word;
-    margin-top: 3rem;
+  text-align: center;
+  font-size: 5rem;
+  position: relative;
+  word-wrap: break-word;
+  margin-top: 3rem;
 }
 
 .about-text {
-    font-size: 1rem;
-    margin: 1rem;
-    text-align: justify;
+  font-size: 1rem;
+  margin: 1rem;
+  text-align: justify;
 }
-.carouselAndContact{
-    /* background-color: #9ee8de; */
-    padding-top:3rem;
-    background-color: black;
-    background-image: url("/images/webpage_images/bg4.png");
+.carouselAndContact {
+  /* background-color: #9ee8de; */
+  padding-top: 3rem;
+  background-color: black;
+  background-image: url("/images/webpage_images/bg4.png");
 }
 .contact {
-    margin: 0;
-    padding: 0;
-    
-    
+  margin: 0;
+  padding: 0;
 }
 
 .contact .row {
-    width: 100%;
-    margin: 1rem;
-    margin-left: 3rem;
+  width: 100%;
+  margin: 1rem;
+  margin-left: 3rem;
 }
 
 .contact-banner {
-    text-align: center;
-    font-family: 'Handlee', serif;
-    font-size: 2rem;
-    color: white;
-    padding: 2rem;
+  text-align: center;
+  font-family: "Handlee", serif;
+  font-size: 2rem;
+  color: white;
+  padding: 2rem;
 }
 
 .contact-last-row {
-    padding-bottom: 2rem;
+  padding-bottom: 2rem;
 }
 
 .contact .col {
-    padding: 0;
-    align-items: center;
-    justify-content: center;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .contact .col .contact-item {
-    padding: 0;
-    margin: 0;
-    justify-content: center;
-    align-items: center;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
 }
 
 .contact-item-col {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .contact-item-col a {
-    text-decoration: none;
-    color: white;
-    line-height: 1.5;
+  text-decoration: none;
+  color: white;
+  line-height: 1.5;
 }
 
 .contact-item-col a:hover {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .contact-item-col p {
-    padding: 0;
-    line-height: 1.5;
-    margin: 0;
-    color: white;
+  padding: 0;
+  line-height: 1.5;
+  margin: 0;
+  color: white;
 }
 
 .contact-item-col #contact-item-col-mobile {
-    cursor: default;
+  cursor: default;
 }
 
 .contact-item {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .contact-item i {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .carousel-item {
-    height: 400;
-    width: 400px;
+  height: 400;
+  width: 400px;
+}
+
+.modal {
+  display: block;
+  width: 80%;
+  height: auto;
+  top: 30%;
+  left: 10%;
+  background-color: white;
+}
+
+
+.modal-header, .modal-footer {
+  background-color: teal;
+}
+
+
+.modal-close {
+  float: right;
+  cursor: pointer;
+}
+
+.modal-message {
+    padding:1rem;
 }
 
 @media (min-width: 200px) {
-    .container, .container-sm {
-        max-width: 100%;
-    }
-    .about-banner {
-        font-size: 1rem;
-    }
-    .contact-item {
-        font-size: 1rem;
-    }
+  .container,
+  .container-sm {
+    max-width: 100%;
+  }
+  .about-banner {
+    font-size: 1rem;
+  }
+  .contact-item {
+    font-size: 1rem;
+  }
 }
 
 @media (min-width: 294px) {
-    .container, .container-sm {
-        max-width: 100%;
-    }
-    .about-banner {
-        font-size: 1.5rem;
-    }
-    .contact-item {
-        font-size: 1.5rem;
-    }
+  .container,
+  .container-sm {
+    max-width: 100%;
+  }
+  .about-banner {
+    font-size: 1.5rem;
+  }
+  .contact-item {
+    font-size: 1.5rem;
+  }
 }
 
 @media (min-width: 430px) {
-    .container, .container-sm {
-        max-width: 100%;
-    }
-    .about-banner {
-        font-size: 2rem;
-    }
+  .container,
+  .container-sm {
+    max-width: 100%;
+  }
+  .about-banner {
+    font-size: 2rem;
+  }
 }
 
 @media (min-width: 576px) {
-    .container, .container-sm {
-        max-width: 100%;
-    }
-    .about-banner {
-        font-size: 2rem;
-    }
+  .container,
+  .container-sm {
+    max-width: 100%;
+  }
+  .about-banner {
+    font-size: 2rem;
+  }
 }
 
 @media (min-width: 576px) {
-    .container, .container-sm {
-        max-width: 100%;
-    }
-    .about-banner {
-        display: block;
-        font-size: 3rem;
-    }
+  .container,
+  .container-sm {
+    max-width: 100%;
+  }
+  .about-banner {
+    display: block;
+    font-size: 3rem;
+  }
 }
 
 @media (min-width: 768px) {
-    .container, .container-md, .container-sm {
-        max-width: 100%;
-    }
-    .body {
-        max-width: 1000px;
-    }
-    .about-banner {
-        display: block;
-        font-size: 4rem;
-    }
-    .about-text {
-        font-size: 2rem;
-    }
+  .container,
+  .container-md,
+  .container-sm {
+    max-width: 100%;
+  }
+  .body {
+    max-width: 1000px;
+  }
+  .about-banner {
+    display: block;
+    font-size: 4rem;
+  }
+  .about-text {
+    font-size: 2rem;
+  }
 }
 
 @media (min-width: 992px) {
-    .container, .container-fluid {
-        max-width: 100%;
-    }
-    .about-banner {
-        display: block;
-        font-size: 5rem;
-    }
-    .contact-banner {
-        font-size: 3rem;
-    }
+  .container,
+  .container-fluid {
+    max-width: 100%;
+  }
+  .about-banner {
+    display: block;
+    font-size: 5rem;
+  }
+  .contact-banner {
+    font-size: 3rem;
+  }
 }

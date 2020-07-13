@@ -12,7 +12,7 @@
 
 <body>
 
-      <div id="id01" class="w3-modal" style="display: block;">
+      <!-- <div id="id01" class="w3-modal" style="display: block;">
         <div class="w3-modal-content" style="display: block;">
           <header class="w3-container w3-teal" style="display: block;"> 
             <span onclick="document.getElementById('id01').style.display='none'" 
@@ -24,6 +24,23 @@
 
           </div>
           <footer class="w3-container w3-teal">
+
+          </footer>
+        </div>
+      </div> -->
+
+      <div id="id01" class="modal" style="display: block;">
+        <div class="modal-content" style="display: block;">
+          <header class="modal-header" style="display: block;"> 
+            <span>We have stopped accepting orders due to COVID-19</span>
+            <span onclick="document.getElementById('id01').style.display='none'" 
+            class="modal-close" style="color:white;">&times;</span>            
+          </header>
+          <div class="modal-message">
+            <p style="color:black;">Due to the COVID-19 Virus, we have decided to stop accepting all orders as this puts a risk to our team, our vendors' staff, the courier boys, the warehouse workers, and the customer. Customers can continue to browse the website, but will not be able to place orders until further notice. Let's fight this together. Stay indoors, stay safe.</p>
+
+          </div>
+          <footer class="modal-footer">
             <!-- <p>Modal Footer</p> -->
           </footer>
         </div>

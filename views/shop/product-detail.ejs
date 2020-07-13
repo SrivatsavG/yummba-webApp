@@ -22,12 +22,13 @@
                     <div class="col-12 col-sm-12 col-md-6">
                         <p class="paraFont" id="description "><%= product.description %></p>
                         <hr>
-                        <p class="paraFont" id="price">Price: Rs <%= product.price %></p>
+                        <p class="paraFont" id="price"><span style="font-weight: bold;">Price:</span> Rs <%= product.price %></p>
                         <hr>
 
                         <!-- <% if (isAuthenticated) { %>
                         <%- include('../includes/add-to-cart.ejs') %>
                     <% } %> -->
+                    <p class="paraFont" style="font-weight: bold;">Add to cart</p>
                         <%- include('../includes/add-to-cart.ejs') %>
                     </div>
                 </div>
