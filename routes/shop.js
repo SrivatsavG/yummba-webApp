@@ -36,4 +36,6 @@ router.post('/submitAddress', isAuth, shopController.postSubmitAddress);
 
 router.get('/blogs',shopController.getBlogs);
 
+router.get("/blogs/:blogId",shopController.getBlog);
+
 module.exports = router;

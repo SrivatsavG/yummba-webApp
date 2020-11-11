@@ -3,6 +3,7 @@ const Product = require("../models/product");
 const User = require("../models/user");
 const Blog = require("../models/blog");
 const fileHelper = require("../util/file");
+const fs = require("fs");
 
 var mongoose = require("mongoose");
 
@@ -619,37 +620,49 @@ exports.getWriteBlog = (req, res, next) => {
   }
 };
 
-exports.postWriteBlog = (req, res, next) => {
+exports.postWriteBlog = async (req, res, next) => {
   console.log("REACHED POST WRITE BLOG");
 
-  const title = req.body.title;
-  const imageUrl = req.body.imageUrl;
-  const description = req.body.description;
-  const content = req.body.content;
+  try {
+    const title = req.body.title;
+    const imageUrl = req.body.imageUrl;
+    const description = req.body.description;
+    const content = req.body.content;
 
-  console.log(content);
+    const date = new Date();
+    await fs.writeFile(`blogs/${title}-${date}`, content, function (err) {
+      // const blog = new Blog({
+      //   title: title,
+      //   description: description,
+      //   imageUrl: imageUrl,
+      //   content: `blogs/${title}-${date}`,
+      // });
 
-  const blog = new Blog({
-    title: title,
-    description: description,
-    imageUrl: imageUrl,
-    content: content,
-  });
+      // blog
+      //   .save()
+      //   .then((result) => {
+      //     console.log("THE RESULT IS");
+      //     console.log(result);
+      //     console.log("Created Blog");
+      //     res.redirect("/admin/write-blog");
+      //   })
+      //   .catch((err) => {
+      //     const error = new Error(err);
+      //     //
+      //     error.httpStatusCode = 500;
+      //     //when we pass next with an error as an argument, we tell express to skill all other
+      //     //middleware and go to the error handling middleware
+      //     return next(error);
+      //   });
 
-  blog
-    .save()
-    .then((result) => {
-      console.log("THE RESULT IS");
-      console.log(result);
-      console.log("Created Blog");
       res.redirect("/admin/write-blog");
-    })
-    .catch((err) => {
-      const error = new Error(err);
-      //
-      error.httpStatusCode = 500;
-      //when we pass next with an error as an argument, we tell express to skill all other
-      //middleware and go to the error handling middleware
-      return next(error);
     });
+  } catch (err) {
+    const error = new Error(err);
+    //
+    error.httpStatusCode = 500;
+    //when we pass next with an error as an argument, we tell express to skill all other
+    //middleware and go to the error handling middleware
+    return next(error);
+  }
 };

@@ -1,0 +1,68 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/blog-list.css">
+
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <% if (blogs.length > 0) { %>
+            <% var length = blogs.length %>
+        <div class="grid">
+            <% for (let blog of blogs.reverse()) { %>
+            
+            <article class="card blog-item">
+                <div class="blog-item-container container">
+                    <a href="/blogs/<%= blog._id %>">
+                        <div class="row d-flex justify-content-around">
+                            <div class="col col-md-4">
+                                <div class="card__image">
+                                    <img src="<%= blog.imageUrl %>" alt="<%= blog.title %>">
+                                </div>
+                            </div>
+                            <div class="col flex-fill col-sm-12 col-md-8">
+                                <div class="card__content">
+                                    <p class="blog__description">
+                                        <%= blog.title %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <% if (isAuthenticated) { %>
+                        <% if (user._id.toString() == admin ) { %>
+                        <div class="row d-flex justify-content-around">
+                            <div class="flex-column">
+
+                                <div>
+                                    <input type="hidden" value="<%= blog._id %>" name="blogId">
+                                    <input type="hidden" name='_csrf' value="<%= csrfToken %>">
+                                    <button class="btn danger" type="button" onclick="deleteBlog(this)"><i
+                                            class="fas fa-trash-alt"></i></button>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <% } %>
+                    <% } %>
+
+                </div>
+            </article>
+
+            <% } %>
+        </div>
+        <% } else { %>
+        <h1>No Blogs</h1>
+        <% } %>
+    </main>
+
+
+
+    <%- include('../includes/end.ejs') %>
+
+    <script src='/js/admin.js'></script>

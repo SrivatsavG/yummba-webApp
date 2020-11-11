@@ -537,9 +537,34 @@ exports.postSubmitAddress = (req, res, next) => {
 exports.getBlogs = (req, res, next) => {
   Blog.find() // mongoose method:- gives all products
     .then(blogs => {
-      res.render('shop/blog-list', {
+      res.render('shop/blog-list2', {
         blogs: blogs,
         pageTitle: 'Blog',
+        path: '/blogs',
+        user: req.user || null,
+        admin: process.env.ADMIN
+      });
+    })
+    .catch(err => {
+      const error = new Error(err);
+      //
+      error.httpStatusCode = 500;
+      //when we pass next with an error as an argument, we tell express to skill all other 
+      //middleware and go to the error handling middleware
+      return next(error);
+    });
+};
+
+
+exports.getBlog = (req, res, next) => {
+  const blogId = req.params.blogId;
+  Blog.findById(blogId) // mongoose method:- gives blog
+    .then(blog => {
+      console.log(blog);
+      res.render('shop/blog', {
+        blog: blog,
+        content:JSON.stringify(blog.content),
+        pageTitle: blog.title,
         path: '/blogs',
         user: req.user || null,
         admin: process.env.ADMIN
